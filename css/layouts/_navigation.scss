@@ -1,0 +1,23 @@
+.main-header{
+  text-align: center;
+  background: $blue2;
+  padding: 5px 0;
+}
+.navigation{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  li{
+    display: inline-block;
+  }
+  a{
+    display: block;
+    padding: 10px 50px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  a.active{
+    background: $blue3;
+  }
+}

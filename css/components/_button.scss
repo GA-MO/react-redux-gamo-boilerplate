@@ -1,0 +1,59 @@
+//center
+.button{
+  @extend .font-button;
+  border-radius: 25px;
+  padding: 11px 30px 11px 30px;
+  display: inline-block;
+  text-decoration: none;
+  vertical-align: top;
+  cursor: pointer;
+  color: #fff;
+  border: none;
+  outline: none;
+  box-shadow:0 1px 1px rgba(0,0,0,0.4);
+  &:hover, &:visited, &:focus{
+    color: #fff;
+    text-decoration: none;
+  }
+  @include transition(0.5s);
+  &.small{
+    @extend .font-button-small;
+    padding: 8px 30px 8px 30px;
+  }
+  &.full{
+    display: block;
+    text-align: center;
+  }
+
+  &.red{
+    background-color: $red2;
+    &:hover{background-color: $red3;}
+    &:active{background-color: $red1;}
+  }
+  &.green{
+    background-color: $green2;
+    &:hover{background-color: $green3;}
+    &:active{background-color: $green1;}
+  }
+
+  &.blue{
+    background-color: $blue2;
+    &:hover{background-color: $blue3;}
+    &:active{background-color: $blue1;}
+  }
+
+  &.gray{
+    background-color: $gray2;
+    &:hover{background-color: $gray3;}
+    &:active{background-color: $gray1;}
+  }
+
+  &.disable{
+    background-color: $gray5;
+    color: $gray6;
+    cursor: default;
+    &:hover{
+      color: $gray6;
+    }
+  }
+}
