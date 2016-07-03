@@ -20,9 +20,9 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.jsx?$/, loaders: [ 'babel-loader' ], exclude: /node_modules/, include: __dirname },
-      { test: /\.scss$/, exclude: /node_modules/, loader: 'style!css?sourceMap!sass?sourceMap&sourceComments' },
+      { test: /\.scss$/, loader: 'style!css?sourceMap!sass?sourceMap&sourceComments' },
       { test: /\.css$/, loaders: ['style-loader', 'css-loader?sourceMap'] },
-      { test: /\.(woff2?|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000' },
+      { test: /\.(woff2?|ttf|eot|svg|jpg|png)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader' },
     ]
   },
   resolve: {

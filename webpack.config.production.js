@@ -31,7 +31,8 @@ module.exports = {
       { test: /\.jsx?$/, loaders: [ 'babel-loader' ], exclude: /node_modules/, include: __dirname },
       { test: /\.css$/, loader: ExtractTextPlugin.extract(['css','sass?outputStyle=compressed']) },
       { test: /\.scss$/, loader: ExtractTextPlugin.extract(['css','sass?outputStyle=compressed']) },
-      { test: /\.(woff2?|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000' },
+      { test: /\.(woff2?|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000&name=fonsts/[name].[ext]' },
+      { test: /\.(png|jpg)$/, loader: 'url-loader?limit=10000&name=img/[name].[ext]' },
     ]
   },
   resolve: {
