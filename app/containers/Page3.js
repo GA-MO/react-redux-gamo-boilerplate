@@ -29,7 +29,7 @@ const actions = {
   // myActionName: Action.myActionName,
 }
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(actions, dispatch)
+  return { actions: bindActionCreators(actions, dispatch) }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Page3)

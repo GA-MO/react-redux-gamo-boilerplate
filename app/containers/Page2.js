@@ -9,9 +9,11 @@ class Page2 extends React.Component {
   };
 
   render() {
+    console.log('PAGE2', this.props);
     return (
       <div className="text-center">
         <h1>Page2</h1>
+        <a href="javascript:;" onClick={() => this.props.actions.goToPage('page3')} className="btn btn-default">Go Page3</a>
       </div>
     );
   }
@@ -26,10 +28,10 @@ function mapStateToProps(state) {
 
 // Action
 const actions = {
-  // myActionName: Action.myActionName,
+  goToPage: Action.goToPage,
 }
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(actions, dispatch)
+  return { actions: bindActionCreators(actions, dispatch) }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Page2)

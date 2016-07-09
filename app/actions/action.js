@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch';
+import { push } from 'react-router-redux';
 
 export const deleteTodo = (id) => {
   return {
@@ -12,4 +13,8 @@ export const addTodo = (data) => {
     type: 'ADD_TODO',
     data
   }
+}
+
+export const goToPage = (path) => {
+	return dispatch => dispatch(push(`/${path}`))
 }
