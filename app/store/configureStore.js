@@ -7,7 +7,7 @@ import rootReducer from '../reducers'
 export default (history) => {
   const middlewares = [thunk, routerMiddleware(history)]
 
-  if(process.env.NODE_ENV !== 'production') middlewares.push(createLogger())
+  if (process.env.NODE_ENV !== 'production') middlewares.push(createLogger())
 
   const store = createStore(
     rootReducer,
@@ -15,10 +15,9 @@ export default (history) => {
   )
 
   if (module.hot) {
-    module.hot.accept('../reducers', () => {
-      System.import('../reducers').then(nextRootReducer =>
-        store.replaceReducer(nextRootReducer.default)
-      )
+    module.hot.accept('../reducers/index', () => {
+      const nextRootReducer = require('../reducers/index').default;
+      store.replaceReducer(nextRootReducer);
     })
   }
 

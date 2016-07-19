@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/action'
@@ -29,14 +29,14 @@ class Home extends React.Component {
                 </ul>
                 <h4>Getting Started</h4>
                 <pre><code>
-                  $ cd react-redux-gamo-boilerplate<br/>
-                  $ npm install<br/>
-                  $ npm start  
+                  $ cd react-redux-gamo-boilerplate<br />
+                  $ npm install<br />
+                  $ npm start
                 </code></pre>
                 <h4>Build to production</h4>
                 <pre><code>
-                  $ npm run build<br/>
-                  ../dist/<br/>
+                  $ npm run build<br />
+                  ../dist/<br />
                   ../app.html
                 </code></pre>
                 <h4>Testing</h4>
@@ -55,7 +55,7 @@ class Home extends React.Component {
 // State
 function mapStateToProps(state) {
   return {
-    // myState: state.myState,
+    // todo: state.todo,
   }
 }
 

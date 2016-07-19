@@ -11,16 +11,15 @@ export default class Root extends Component {
     const history = useRouterHistory(createHashHistory)({ queryKey: false });
     let store;
     let router;
-    if(process.env.NODE_ENV !== 'production'){
+    if (process.env.NODE_ENV !== 'production') {
       store = configureStore(browserHistory);
       router = <Router history={browserHistory} routes={routes} />;
     } else {
       store = configureStore(history);
       router = <Router history={history} routes={routes} />;
     }
-    console.log("5555555555555555", process.env.NODE_ENV);
     return (
-      <Provider store={store} key='provider'>
+      <Provider store={store} key="provider">
         {router}
       </Provider>
     )
