@@ -14,31 +14,31 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('production'),
-      }
+        NODE_ENV: JSON.stringify('production'),
+      },
     }),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
         warnings: false,
       },
-      minimize: true
+      minimize: true,
     }),
     new webpack.NoErrorsPlugin(),
     new ExtractTextPlugin('style.css'),
   ],
   module: {
     loaders: [
-      { test: /\.jsx?$/, loaders: [ 'babel-loader' ], exclude: /node_modules/, include: __dirname },
-      { test: /\.css$/, loader: ExtractTextPlugin.extract(['css','sass?outputStyle=compressed']) },
-      { test: /\.scss$/, loader: ExtractTextPlugin.extract(['css','sass?outputStyle=compressed']) },
+      { test: /\.jsx?$/, loaders: ['babel-loader'], exclude: /node_modules/, include: __dirname },
+      { test: /\.css$/, loader: ExtractTextPlugin.extract(['css', 'sass?outputStyle=compressed']) },
+      { test: /\.scss$/, loader: ExtractTextPlugin.extract(['css', 'sass?outputStyle=compressed']) },
       { test: /\.(woff2?|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000&name=fonsts/[name].[ext]' },
       { test: /\.(png|jpg)$/, loader: 'url-loader?limit=10000&name=img/[name].[ext]' },
-    ]
+    ],
   },
   resolve: {
-      extensions: ['', '.react.js', '.js', '.jsx'],
-      alias: {
-        'ie' : 'component-ie'
-      }
-  }
+    extensions: ['', '.react.js', '.js', '.jsx'],
+    alias: {
+      ie: 'component-ie',
+    },
+  },
 }

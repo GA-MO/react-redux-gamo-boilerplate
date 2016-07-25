@@ -31,7 +31,7 @@ class Page1 extends Component {
   }
 
   errorMessageElement(field) {
-    if (field['touched'] && field['error']) {
+    if (field['error']) {
       return <div className='error'>{field['error']}</div>
     }
   }
