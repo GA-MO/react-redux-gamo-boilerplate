@@ -1,3 +1,4 @@
+require('es6-promise').polyfill();
 import fetch from 'isomorphic-fetch';
 export const baseURL = 'http://localhost:8080';
 export const headers = {
