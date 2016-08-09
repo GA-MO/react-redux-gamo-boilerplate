@@ -1,7 +1,5 @@
-//center
-.button{
-  @extend .font-button;
-  border-radius: 25px;
+.button-style{
+  border-radius: 3px;
   padding: 11px 30px 11px 30px;
   display: inline-block;
   text-decoration: none;
@@ -11,20 +9,22 @@
   border: none;
   outline: none;
   box-shadow:0 1px 1px rgba(0,0,0,0.4);
+  text-align: center;
+  background: #999;
+  @include transition(0.3s);
+  i{
+    margin-right: 5px;
+  }
+}
+.button{
+  @extend .button-style;
   &:hover, &:visited, &:focus{
     color: #fff;
     text-decoration: none;
   }
   @include transition(0.5s);
-  &.small{
-    @extend .font-button-small;
-    padding: 8px 30px 8px 30px;
-  }
-  &.full{
-    display: block;
-    text-align: center;
-  }
-
+  &.small{padding: 9px 20px}
+  &.full{display: block;width: 100%;}
   &.red{
     background-color: $red2;
     &:hover{background-color: $red3;}
@@ -35,25 +35,101 @@
     &:hover{background-color: $green3;}
     &:active{background-color: $green1;}
   }
-
   &.blue{
     background-color: $blue2;
     &:hover{background-color: $blue3;}
     &:active{background-color: $blue1;}
   }
-
   &.gray{
     background-color: $gray2;
     &:hover{background-color: $gray3;}
     &:active{background-color: $gray1;}
   }
-
+  &.gold{
+    background-color: $gold1;
+    &:hover{background-color: $gold1;}
+    &:active{background-color: $gold1;}
+  }
   &.disable{
     background-color: $gray5;
     color: $gray6;
     cursor: default;
-    &:hover{
-      color: $gray6;
-    }
+    &:hover{color: $gray6;}
+  }
+}
+
+.button-outline{
+  @extend .button-style;
+  background: none;
+  padding: 10px 29px;
+  border: 1px solid #999;
+  color: #999;
+  &:hover, &:visited, &:focus{
+    color: #999;
+    text-decoration: none;
+  }
+  @include transition(0.3s);
+  &.small{padding: 8px 20px;}
+  &.full{display: block;width: 100%;}
+  &.red{
+    border-color: $red2;
+    color: $red2;
+    &:hover{border-color: $red3;}
+    &:active{border-color: $red1;}
+  }
+  &.green{
+    border-color: $green2;
+    color: $green2;
+    &:hover{border-color: $green3;}
+    &:active{border-color: $green1;}
+  }
+  &.blue{
+    border-color: $blue2;
+    color: $blue2;
+    &:hover{border-color: $blue3;}
+    &:active{border-color: $blue1;}
+  }
+  &.gray{
+    border-color: $gray2;
+    color: $gray2;
+    &:hover{border-color: $gray3;}
+    &:active{border-color: $gray1;}
+  }
+  &.gold{
+    border-color: $gold1;
+    color: $gold1;
+    &:hover{border-color: $gold1;}
+    &:active{border-color: $gold1;}
+  }
+  &.disable{
+    border-color: $gray5;
+    color: $gray5;
+    cursor: default;
+    &:hover{color: $gray5;}
+  }
+}
+
+.button-inline{
+  margin:0 -5px;
+  .button, .button-outline{
+    margin:0 5px;
+  }
+}
+
+.button-group{
+  letter-spacing: -0.33em;
+  >a, button{
+    letter-spacing: normal;
+    border-radius: 0;
+    border-left-width: 0px;
+  }
+  >a:first-child, button:first-child{
+    border-left-width: 1px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
+  >a:last-child, button:last-child{
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
   }
 }

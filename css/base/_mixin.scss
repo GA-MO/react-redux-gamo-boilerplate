@@ -74,7 +74,7 @@
   } @else if $width and $height {
     width: $width;
     height: $height;
-    margin: -($width / 2) #{0 0} -($height / 2)
+    margin: -($height / 2) #{0 0} -($width / 2)
   } @else if not $height {
     margin-left: -($width / 2);
     transform: translateY(-50%);

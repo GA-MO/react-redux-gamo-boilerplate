@@ -13,7 +13,7 @@ class Page2 extends React.Component {
     return (
       <div className="text-center">
         <h1>Page2</h1>
-        <a href="javascript:;" onClick={() => this.props.actions.goToPage('page3')} className="btn btn-default">Go Page3</a>
+        <a href="javascript:;" onClick={() => this.props.actions.goToPage('style-guide')} className="btn btn-default">Go Page3</a>
       </div>
     );
   }

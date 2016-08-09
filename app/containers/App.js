@@ -11,7 +11,7 @@ const App = (props) => {
             <li><Link activeClassName="active" onlyActiveOnIndex={true} to="/">Home</Link></li>
             <li><Link activeClassName="active" to="/page1">Page1</Link></li>
             <li><Link activeClassName="active" to="/page2">Page2</Link></li>
-            <li><Link activeClassName="active" to="/page3">Page3</Link></li>
+            <li><Link activeClassName="active" to="/style-guide">Style Guide</Link></li>
           </ul>
         </nav>
       </header>

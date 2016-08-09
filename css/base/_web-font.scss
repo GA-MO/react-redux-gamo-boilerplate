@@ -21,86 +21,18 @@ $f-26:26px;
 .f-24{font-size: $f-24;}
 .f-26{font-size: $f-26;}
 
-.text-left { text-align: left; }
-.text-right { text-align: right; }
-.text-center { text-align: center; }
-
-//font text
-.font-gray3{color: $gray3;}
-.font-red2{color: $red2;}
-.font-bold{font-weight: bold;}
-.font-body{font-size: 16px;}
-
-.font-header{
+.font-title-big{
   font-size: 24px;
-  font-weight: bold;
 }
-
 .font-title{
-  font-size: 22px;
-  font-weight: bold;
+  font-size: 20px;
 }
-
-.font-sub-title{
+.font-desc-big{
   font-size: 18px;
-  font-weight: bold;
 }
-
-.font-description-bold{
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.font-description{
+.font-desc{
   font-size: 16px;
 }
-
-.font-description-small{
+.font-desc-small{
   font-size: 14px;
-}
-
-//Font Input
-.font-input{
-  font-size: 16px;
-}
-
-.font-input-small{
-  font-size: 14px;
-}
-
-.font-placeholder{
-  &::-webkit-input-placeholder, 
-  &::-moz-placeholder, 
-  &::-ms-input-placeholder,
-  &::-moz-placeholder {
-    font-size: 18px;
-    color: $gray5;
-  }
-}
-
-// .font-placeholder{
-//  font-size: 14px;
-//  color: $gray4;
-// }
-
-.font-sub-title-white{
-  font-size: 18px;
-  font-weight: bold;
-  color: white;
-}
-
-//button font
-.font-button{
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.font-button-small{
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.font-tab{
-  font-size: 18px;
-  font-weight: bold;
 }
