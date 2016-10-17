@@ -3,7 +3,7 @@ import { Provider } from 'react-redux'
 import { Router, browserHistory, useRouterHistory } from 'react-router'
 import { createHashHistory } from 'history';
 
-import configureStore from '../store/configureStore'
+import configureStore from 'store/configureStore'
 import routes from '../routes'
 
 export default class Root extends Component {

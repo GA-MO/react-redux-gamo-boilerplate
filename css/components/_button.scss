@@ -1,16 +1,20 @@
+
+//center
 .button-style{
+  @extend .f-14;
   border-radius: 3px;
-  padding: 11px 30px 11px 30px;
+  padding: 11px 25px;
   display: inline-block;
+  background: #fff;
   text-decoration: none;
   vertical-align: top;
   cursor: pointer;
-  color: #fff;
+  color: #666;
   border: none;
   outline: none;
-  box-shadow:0 1px 1px rgba(0,0,0,0.4);
+  box-shadow:0 1px 1px rgba(0,0,0,0.2);
   text-align: center;
-  background: #999;
+  font-size: 14px;
   @include transition(0.3s);
   i{
     margin-right: 5px;
@@ -19,106 +23,164 @@
 .button{
   @extend .button-style;
   &:hover, &:visited, &:focus{
-    color: #fff;
     text-decoration: none;
   }
   @include transition(0.5s);
-  &.small{padding: 9px 20px}
+  &.large{padding: 15px 35px;font-size: 18px;}
+  &.small{padding: 5px 15px;}
+  &.xsmall{padding: 3px 10px;font-size: 12px;}
   &.full{display: block;width: 100%;}
+  &.text-info{box-shadow: none;}
+
   &.red{
+    $color: #fff;
+    color: $color;
     background-color: $red2;
-    &:hover{background-color: $red3;}
-    &:active{background-color: $red1;}
+    &.disable, &:disabled{opacity: 0.3;cursor: no-drop;}
+    &:hover{background-color: $red3;color: $color;}
+    &:active, &.active{background-color: $red1;}
+  }
+  &.black {
+    $color: #fff;
+    color: $color;
+    background-color: #000;
+    &.disable, &:disabled{opacity: 0.3;cursor: no-drop;}
   }
   &.green{
+    $color: #fff;
+    color: $color;
     background-color: $green2;
-    &:hover{background-color: $green3;}
-    &:active{background-color: $green1;}
+    &.disable, &:disabled{opacity: 0.3;cursor: no-drop;}
+    &:hover{background-color: $green3;color: $color;}
+    &:active, &.active{background-color: $green1;}
   }
   &.blue{
+    $color: #fff;
+    color: $color;
     background-color: $blue2;
-    &:hover{background-color: $blue3;}
-    &:active{background-color: $blue1;}
+    &.disable, &:disabled{opacity: 0.3;cursor: no-drop;}
+    &:hover{background-color: $blue3;color: $color;}
+    &:active, &.active{background-color: $blue1;}
   }
   &.gray{
+    $color: #fff;
+    color: $color;
     background-color: $gray2;
-    &:hover{background-color: $gray3;}
-    &:active{background-color: $gray1;}
+    &.disable, &:disabled{opacity: 0.3;cursor: no-drop;}
+    &:hover{background-color: $gray3;color: $color;}
+    &:active, &.active{background-color: $gray1;}
   }
-  &.gold{
-    background-color: $gold1;
-    &:hover{background-color: $gold1;}
-    &:active{background-color: $gold1;}
-  }
-  &.disable{
-    background-color: $gray5;
-    color: $gray6;
-    cursor: default;
-    &:hover{color: $gray6;}
-  }
+
+  &.disable, &:disabled{opacity: 0.3;cursor: no-drop;}
+  // &.disable, &:disabled{
+  //   background-color: $gray5;
+  //   color: $gray6;
+  //   cursor: no-drop;
+  //   &.disable, &:disabled{opacity: 0.3;}
+  //   &:hover, &:active{color: $gray6; background-color: $gray5;}
+  // }
 }
 
 .button-outline{
   @extend .button-style;
-  background: none;
-  padding: 10px 29px;
-  border: 1px solid #999;
-  color: #999;
+  background: #fff;
+  padding: 10px 24px;
+  border: 1px solid $gray5;
   &:hover, &:visited, &:focus{
-    color: #999;
+    color: #666;
     text-decoration: none;
   }
   @include transition(0.3s);
-  &.small{padding: 8px 20px;}
+  &.large{padding: 14px 34px;font-size: 18px;}
+  &.small{padding: 4px 14px;}
+  &.xsmall{padding: 2px 9px;font-size: 12px;}
   &.full{display: block;width: 100%;}
+
   &.red{
     border-color: $red2;
     color: $red2;
+    &.disable, &.disabled{opacity: 0.3;}
     &:hover{border-color: $red3;}
-    &:active{border-color: $red1;}
+    &:active, &.active{
+      border-color: $red2;
+      background-color: $red2;
+      color: #fff;
+    }
+  }
+  &.black{
+    border: 1px solid #000;
+    color: #000;
+    &.disable, &.disabled{opacity: 0.3;cursor: no-drop;}
   }
   &.green{
     border-color: $green2;
     color: $green2;
+    &.disable, &.disabled{opacity: 0.3;cursor: no-drop;}
     &:hover{border-color: $green3;}
-    &:active{border-color: $green1;}
+    &:active, &.active{
+      border-color: $green1;
+      background-color: $green1;
+      color: #fff;
+    }
   }
   &.blue{
     border-color: $blue2;
     color: $blue2;
+    &.disable, &.disabled{opacity: 0.3;cursor: no-drop;}
     &:hover{border-color: $blue3;}
-    &:active{border-color: $blue1;}
+    &:active, &.active{
+      border-color: $blue1;
+      background-color: $blue1;
+      color: #fff;
+    }
   }
   &.gray{
-    border-color: $gray2;
-    color: $gray2;
-    &:hover{border-color: $gray3;}
-    &:active{border-color: $gray1;}
-  }
-  &.gold{
-    border-color: $gold1;
-    color: $gold1;
-    &:hover{border-color: $gold1;}
-    &:active{border-color: $gold1;}
-  }
-  &.disable{
     border-color: $gray5;
-    color: $gray5;
-    cursor: default;
-    &:hover{color: $gray5;}
+    color: $gray2;
+    &.disable, &.disabled{opacity: 0.3;cursor: no-drop;}
+    &:hover{border-color: $gray3;}
+    &:active, &.active{
+      border-color: $gray1;
+      background-color: $gray1;
+      color: #fff;
+    }
   }
+  &.disable, &:disabled{opacity: 0.3;cursor: no-drop;}
+  // &.disable{
+  //   border-color: $gray5;
+  //   color: $gray6;
+  //   cursor: no-drop;
+  //   &.disabled{opacity: 0.3;}
+  //   &:hover, &:active{color: $gray6; border-color: $gray5;}
+  // }
 }
 
 .button-inline{
-  margin:0 -5px;
+  margin-left: -1px;
   .button, .button-outline{
     margin:0 5px;
   }
+  .button:first-child{
+    margin-left: 0;
+  }
+  .button:last-child{
+    margin-right: 0;
+  }
+}
+
+.button-inline-left {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  min-width: 160px;
 }
 
 .button-group{
   letter-spacing: -0.33em;
+  display: table;
+  width: 100%;
+  table-layout: fixed;
   >a, button{
+    display: table-cell;
     letter-spacing: normal;
     border-radius: 0;
     border-left-width: 0px;
@@ -131,5 +193,46 @@
   >a:last-child, button:last-child{
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
+  }
+}
+.button-group.vertical{
+  display: block;
+  >a, button{
+    display: block;
+    border-left-width: 1px;
+    border-top-width: 0px;
+  }
+  >a:first-child, button:first-child{
+    border-top-width: 1px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 0px;
+  }
+  >a:last-child, button:last-child{
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+}
+
+.button-checkbox {
+  @extend .button;
+  color: #fff;
+  font-size: 14px;
+  vertical-align: middle;
+  @include transition(.3s);
+  &:before {
+    display: inline-block;
+    width: 20px;
+    vertical-align: middle;
+    margin-right: 20px;
+    color: #fff;
+    font-size: 24px;
+    content: '\f096';
+    font-family: 'FontAwesome';
+  }
+  &.active:before {
+    font-size: 23px;
+    content: '\f14a';
   }
 }

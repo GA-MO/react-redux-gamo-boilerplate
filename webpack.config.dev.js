@@ -3,21 +3,28 @@ var webpack = require('webpack');
 
 module.exports = {
   // or devtool: 'eval' to debug issues with compiled output:
-  devtool: 'eval',
-  entry: [
-    // necessary for hot reloading with IE:
-    'eventsource-polyfill',
-    'react-hot-loader/patch',
-    // listen to code updates emitted by hot middleware:
-    'webpack-hot-middleware/client',
-    './app/index',
-  ],
+  devtool: 'source-map',
+  entry: {
+    bundle: [
+      // necessary for hot reloading with IE:
+      'eventsource-polyfill',
+      'react-hot-loader/patch',
+      // listen to code updates emitted by hot middleware:
+      'webpack-hot-middleware/client',
+      './app/index',
+    ],
+  },
   output: {
     path: path.join(__dirname, 'static'),
     filename: 'bundle.js',
     publicPath: '/static/',
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      React: 'react',
+      $: 'jquery',
+      _: 'lodash',
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
   ],
@@ -30,6 +37,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    modulesDirectories: ['app', 'src', 'node_modules'],
+    extensions: ['', '.js', '.jsx', '.json'],
   },
 };

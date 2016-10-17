@@ -1,6 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
@@ -17,6 +17,11 @@ module.exports = {
         NODE_ENV: JSON.stringify('production'),
       },
     }),
+    new webpack.ProvidePlugin({
+      React: 'react',
+      $: 'jquery',
+      _: 'lodash',
+    }),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
         warnings: false,
@@ -31,14 +36,12 @@ module.exports = {
       { test: /\.jsx?$/, loaders: ['babel-loader'], exclude: /node_modules/, include: __dirname },
       { test: /\.css$/, loader: ExtractTextPlugin.extract(['css', 'sass?outputStyle=compressed']) },
       { test: /\.scss$/, loader: ExtractTextPlugin.extract(['css', 'sass?outputStyle=compressed']) },
-      { test: /\.(woff2?|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000&name=fonsts/[name].[ext]' },
+      { test: /\.(woff2?|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=100000&name=fonts/[name].[ext]' },
       { test: /\.(png|jpg)$/, loader: 'url-loader?limit=10000&name=img/[name].[ext]' },
     ],
   },
   resolve: {
-    extensions: ['', '.react.js', '.js', '.jsx'],
-    alias: {
-      ie: 'component-ie',
-    },
+    modulesDirectories: ['app', 'src', 'node_modules'],
+    extensions: ['', '.js', '.jsx', '.json'],
   },
 }

@@ -25,19 +25,30 @@ const validate = values => {
   return errors
 }
 
-class Page1 extends Component {
+@reduxForm(
+  {
+    form: 'page',
+    fields,
+    validate,
+  },
+)
+export default class Page1 extends Component {
   static propTypes = {
     fields: PropTypes.object.isRequired,
   }
 
   errorMessageElement(field) {
+    let errorNode = ''
     if (field['error']) {
-      return <div className='error'>{field['error']}</div>
+      errorNode = <div className='error'>{field['error']}</div>
     }
+    return errorNode;
   }
-  submit(values, dispatch){
-    console.log("sad", values);
+
+  submit(values, dispatch) {
+    console.log('Submit', values);
   }
+
   render() {
     console.log("PAGE1", this.props);
     const {fields: {firstName, lastName, email}, resetForm, handleSubmit, submitting} = this.props;
@@ -76,10 +87,3 @@ class Page1 extends Component {
   }
 }
 
-export default reduxForm(
-  {
-    form: 'page',
-    fields,
-    validate,
-  },
-)(Page1)
