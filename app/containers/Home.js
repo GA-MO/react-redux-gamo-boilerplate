@@ -13,6 +13,7 @@ function mapStateToProps(state) {
 // Action
 const actions = {
   // myActionName: Action.myActionName,
+  getUser: Action.getUser,
 }
 function mapDispatchToProps(dispatch) {
   return { actions: bindActionCreators(actions, dispatch) }
@@ -22,6 +23,10 @@ function mapDispatchToProps(dispatch) {
 export default class Home extends React.Component {
   static propTypes = {
     // name: React.PropTypes.string,
+  };
+
+  componentDidMount = () => {
+    this.props.actions.getUser();
   };
 
   render() {

@@ -3,7 +3,8 @@ var webpack = require('webpack');
 
 module.exports = {
   // or devtool: 'eval' to debug issues with compiled output:
-  devtool: 'source-map',
+  // devtool: 'source-map',
+  devtool: 'cheap-module-eval-source-map',
   entry: {
     bundle: [
       // necessary for hot reloading with IE:

@@ -3,12 +3,26 @@ var webpack = require('webpack')
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  devtool: 'source-map',
-  entry: './app/index.js',
+  // devtool: 'source-map',
+  // entry: './app/index.js',
+  entry: {
+    app: [
+      path.join(__dirname, 'app/index.js'),
+    ],
+    vendor: [
+      'react',
+      'react-dom',
+      'react-redux',
+      'react-router',
+      'redux',
+    ],
+  },
+
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
   },
+
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
@@ -17,6 +31,7 @@ module.exports = {
         NODE_ENV: JSON.stringify('production'),
       },
     }),
+    new webpack.optimize.DedupePlugin(),
     new webpack.ProvidePlugin({
       React: 'react',
       $: 'jquery',
@@ -30,7 +45,14 @@ module.exports = {
     }),
     new webpack.NoErrorsPlugin(),
     new ExtractTextPlugin('style.css'),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: Infinity,
+      path: path.join(__dirname, 'dist'),
+      filename: '[name].js',
+    }),
   ],
+
   module: {
     loaders: [
       { test: /\.jsx?$/, loaders: ['babel-loader'], exclude: /node_modules/, include: __dirname },
