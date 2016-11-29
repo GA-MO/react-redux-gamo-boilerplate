@@ -1,7 +1,7 @@
 require('es6-promise').polyfill();
 import 'isomorphic-fetch';
-export const apiURL = 'http://programthong.com/wing/wingdev';
-
+import config from '../../configs';
+const host = config.host;
 /**
  * Fetch API
  * @param  {String} url     path request to service
@@ -79,7 +79,7 @@ export default (store) => (dispatch) => (action) => {
    * @param {String} patch
    * @param {Object} options
    */
-  return fetchApi(`${apiURL}${pathURL}`, options)
+  return fetchApi(`${host}${pathURL}`, options)
   .then(
 
     /**

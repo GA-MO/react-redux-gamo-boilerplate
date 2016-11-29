@@ -1,17 +1,32 @@
 {
   "name": "MyApp",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "npm run clean && webpack --config webpack.config.production.js",
-    "start": "node devServer.js",
-    "clean": "rimraf dist",
-    "tester": "mocha ./test/*.js --compilers js:babel-register",
-    "test": "npm run tester -- --watch"
+    "dev": "better-npm-run dev",
+    "build": "npm run clean && better-npm-run build",
+    "clean": "better-npm-run clean",
+    "test": "better-npm-run test"
   },
-  "peerDependencies": {
-    "react": "^15.0.2",
-    "react-dom": "^15.0.2"
+  "betterScripts": {
+    "dev": {
+        "command": "node devServer.js  --config webpack.config.dev.js",
+        "env": {
+            "NODE_ENV": "development"
+        }
+    },
+    "build": {
+        "command": "webpack --config webpack.config.production.js",
+        "env": {
+            "NODE_ENV": "production"
+        }
+    },
+    "test": {
+        "command": "mocha ./test/*.js --compilers js:babel-register --watch"
+    },
+    "clean": {
+        "command": "rimraf dist"
+    }
   },
   "dependencies": {
     "es6-promise": "^3.2.1",

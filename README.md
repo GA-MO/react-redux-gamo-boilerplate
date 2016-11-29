@@ -15,7 +15,7 @@ This is react starter boilerplate for client
 ```
 $ cd react-redux-gamo-boilerplate
 $ npm install
-$ npm start  
+$ npm dev  
 ```
 
 # Build to production
