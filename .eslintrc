@@ -4,11 +4,11 @@
   "env": {
     "browser": true,
     "node": true,
-    "mocha": true
+    "mocha": true,
   },
   "plugins": [
     "babel",
-    "react"
+    "react",
   ],
   "rules": {
     "semi": 0,
@@ -26,5 +26,7 @@
     "id-length": 0,
     "no-unused-expressions": 0,
     "func-names": 0,
+    "linebreak-style": 0,
+    "jsx-filename-extension": 0,
   }
 }
