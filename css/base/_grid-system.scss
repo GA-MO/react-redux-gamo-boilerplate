@@ -39,11 +39,11 @@ $width-breakpoints: (
   padding-left: $gap-colum;
   padding-right: $gap-colum;
 }
-.row {margin-left: -$gap-colum;margin-right: -$gap-colum;letter-spacing: -0.3em;}
-.row:before, .row:after{ content: " "; display: table; }
+.row {margin-left: -$gap-colum;margin-right: -$gap-colum;letter-spacing: -0.33em;}
+.row:before, .row:after{ content: " "; /*display: table;*/ }
 .row:after{clear: both;}
-.row-fluid {margin-left: 0px;margin-right: 0px;letter-spacing: -0.3em;}
-.row-fluid:before, .row-fluid:after{ content: " "; display: table; }
+.row-fluid {margin-left: 0px;margin-right: 0px;letter-spacing: -0.33em;}
+.row-fluid:before, .row-fluid:after{ content: " "; /*display: table;*/ }
 .row-fluid:after{clear: both;}
 
 @mixin grid-layout($grid-name){

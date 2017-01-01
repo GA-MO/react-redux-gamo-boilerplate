@@ -1,0 +1,40 @@
+.box-message-info{
+	position: relative;
+	padding: 20px 30px;
+	color: #fff;
+	background: $gray1;
+	&:after{
+		position: absolute;
+    right: 30px;
+    top: 18px;
+    font-family: 'FontAwesome', serif;
+    color: #fff;
+    font-size: 16px;
+	}
+	// ERROR
+  &.error{
+    background: $red2;
+    &:after{content: "\f057";}
+  }
+
+  // WARNING
+  &.warning{
+  	background: $yellow;
+    &:after{content: "\f06a";}
+  }
+
+  // SUCCESS
+  &.success{
+  	background: $green2;
+    &:after{content: "\f058";}
+  }
+
+  // LOADING
+  &.loading{
+  	background: $gray2;
+    &:after{
+    	content: "\f110";
+      animation: rotate 1s infinite linear;
+    }
+  }
+}

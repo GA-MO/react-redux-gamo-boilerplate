@@ -27,6 +27,7 @@
     "no-unused-expressions": 0,
     "func-names": 0,
     "linebreak-style": 0,
-    "jsx-filename-extension": 0,
+    "react/jsx-filename-extension ": 0,
+    "import/no-extraneous-dependencies": 0,
   }
 }

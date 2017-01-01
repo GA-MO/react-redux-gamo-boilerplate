@@ -1,7 +1,6 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as Action from 'actions/action'
 
 // State
 function mapStateToProps(state) {
@@ -13,7 +12,6 @@ function mapStateToProps(state) {
 // Action
 const actions = {
   // myActionName: Action.myActionName,
-  getUser: Action.getUser,
 }
 function mapDispatchToProps(dispatch) {
   return { actions: bindActionCreators(actions, dispatch) }
@@ -25,17 +23,14 @@ export default class Home extends React.Component {
     // name: React.PropTypes.string,
   };
 
-  componentDidMount = () => {
-    this.props.actions.getUser();
-  };
-
   render() {
+    console.log("HOME", this.props);
     return (
       <div className="container">
-        <div className="text-center">
+        <div className="_center">
           <div className="row">
             <div className="D-6">
-              <div className="text-left">
+              <div className="_left">
                 <h2>GAMO Boilerplate</h2>
                 <p>This is react starter boilerplate for client</p>
                 <h4>Features</h4>

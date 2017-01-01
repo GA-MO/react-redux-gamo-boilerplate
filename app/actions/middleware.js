@@ -1,7 +1,13 @@
-require('es6-promise').polyfill();
 import 'isomorphic-fetch';
 import config from '../../configs';
+
+require('es6-promise').polyfill();
+
 const host = config.host;
+const apiFail = (response) => {
+  if (response.status >= 200 && response.status < 300) return false
+  return true
+}
 /**
  * Fetch API
  * @param  {String} url     path request to service
@@ -10,16 +16,19 @@ const host = config.host;
  */
 function fetchApi(url, options) {
   return fetch(url, options)
-    .then((response) =>
-      response.json().then((json) => ({ json, response }))
+    .then(response =>
+      response.json().then(json => ({ json, response }))
     )
     .then(({ json, response }) => {
-      if (!response.ok) {
-        const { status, statusText } = response;
-        return Promise.reject({
-          status,
-          statusText,
-        });
+      if (apiFail(response)) {
+        // const { status, statusText } = response;
+        // return Promise.reject({
+        //   status,
+        //   statusText,
+        // });
+        const error = new Error(response.statusText);
+        error.response = response;
+        throw error;
       }
       return json;
     });
@@ -61,13 +70,11 @@ export default (store) => (dispatch) => (action) => {
    * @param  {String} options.method
    * @return {Object}
    */
-  if (options.method === 'POST') {
+  if (options.method !== 'GET') {
     options.headers = {
       ...options.headers,
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      WEB_METHOD_CHANNEL: 'WEBUI',
-      E2E_REFID: '',
     };
     options.body = JSON.stringify(options.body);
   } else {
@@ -87,7 +94,7 @@ export default (store) => (dispatch) => (action) => {
      * @param  {Any} data
      * @return {Function}
      */
-    (data) => {
+    (responseData) => {
 
       /**
        * Dispatch action when request API is done
@@ -99,7 +106,7 @@ export default (store) => (dispatch) => (action) => {
       /**
        * If response from server there is fault will dispatch action alert
        */
-      if (data.fault) {
+      if (responseData.fault) {
         return dispatch({
           type: 'ALERT',
         })
@@ -111,7 +118,7 @@ export default (store) => (dispatch) => (action) => {
        * @return {Function} return dispatch, getState and response data
        */
       if (typeof callback === 'function') {
-        return callback(store.dispatch, store.getState, data);
+        return callback(responseData, store.dispatch, store.getState);
       }
 
       /**
@@ -121,7 +128,7 @@ export default (store) => (dispatch) => (action) => {
       return dispatch({
         ...keys,
         type: type,
-        data,
+        responseData,
       });
     },
 
@@ -130,7 +137,7 @@ export default (store) => (dispatch) => (action) => {
      * @param  {Object} error
      * @return {Function}
      */
-    (error) => dispatch({
+    error => dispatch({
       ...keys,
       type: 'API_FAIL',
       error,

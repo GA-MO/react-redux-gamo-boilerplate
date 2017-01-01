@@ -1,0 +1,39 @@
+.box-input-with-button{
+  position: relative;
+  z-index: 1;
+  display: table;
+  margin-bottom: 20px;
+  .wrap-form-input{
+    position: relative;
+    z-index: 2;
+    float: left;
+    width: 100%;
+    margin-bottom: 0;
+    display: table-cell;
+  }
+  .wrap-form-input .form-input{
+    border-radius: 0;
+    border-left-width: 0;
+  }
+  .wrap-form-input:first-child .form-input{
+    border-left-width: 1px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
+  .input-group-button {
+    position: relative;
+    font-size: 0;
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: middle;
+    display: table-cell;
+  }
+  .input-group-button button:last-child, .input-group-button a:last-child{
+    font-size: 14px;
+    height: 34px;
+    padding: 6px 12px;
+    border-radius: 0;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+}

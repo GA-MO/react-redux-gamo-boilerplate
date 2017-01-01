@@ -40,7 +40,7 @@ export default class Page1 extends Component {
   errorMessageElement(field) {
     let errorNode = ''
     if (field['error']) {
-      errorNode = <div className='error'>{field['error']}</div>
+      errorNode = <div className="validation-label">{field['error']}</div>;
     }
     return errorNode;
   }
@@ -54,31 +54,39 @@ export default class Page1 extends Component {
     const {fields: {firstName, lastName, email}, resetForm, handleSubmit, submitting} = this.props;
     return (
       <div className="container">
-        <div className="row text-center">
-          <div className="D-6 text-left">
+        <div className="row _center">
+          <div className="D-6 _left">
             <h2>Redux form</h2>
             <form onSubmit={handleSubmit(this.submit)}>
-              <div className="form-group">
-                <label>First Name</label>
-                <input type="text" className="form-control" placeholder="First Name" {...firstName}/>
-                {this.errorMessageElement(firstName)}
+              <div className="box-form-input">
+                <label className="form-label">First Name</label>
+                <div className="wrap-form-input error">
+                  <input type="text" className="form-input" placeholder="First Name" {...firstName}/>
+                  {this.errorMessageElement(firstName)}
+                </div>
               </div>
-              <div className="form-group">
-                <label>Last Name</label>
-                <input type="text" className="form-control" placeholder="Last Name" {...lastName}/>
-                {this.errorMessageElement(lastName)}
+              <div className="box-form-input">
+                <label className="form-label">Last Name</label>
+                <div className="wrap-form-input error">
+                  <input type="text" className="form-input" placeholder="Last Name" {...lastName}/>
+                  {this.errorMessageElement(lastName)}
+                </div>
               </div>
-              <div className="form-group">
-                <label>Email</label>
-                <input type="email" className="form-control" placeholder="Email" {...email}/>
-                {this.errorMessageElement(email)}
+              <div className="box-form-input">
+                <label className="form-label">Email</label>
+                <div className="wrap-form-input error">
+                  <input type="email" className="form-input" placeholder="Email" {...email}/>
+                  {this.errorMessageElement(email)}
+                </div>
               </div>
-              <button type="submit" className="btn btn-primary" disabled={submitting}>
-                {submitting ? <i/> : <i/>} Submit
-              </button>
-              <button type="button" className="btn" disabled={submitting} onClick={resetForm}>
-                Clear Values
-              </button>
+              <div className="button-inline">
+                <button type="submit" className="button blue" disabled={submitting}>
+                  {submitting ? <i/> : <i/>}Submit
+                </button>
+                <button type="button" className="button-outline" disabled={submitting} onClick={resetForm}>
+                  Clear Values
+                </button>
+              </div>
             </form>
           </div>
         </div>
@@ -86,4 +94,3 @@ export default class Page1 extends Component {
     )
   }
 }
-

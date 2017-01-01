@@ -1,9 +1,8 @@
 
-//center
 .button-style{
   @extend .f-14;
   border-radius: 3px;
-  padding: 11px 25px;
+  padding: 7px 16px 8px;
   display: inline-block;
   background: #fff;
   text-decoration: none;
@@ -22,12 +21,23 @@
 }
 .button{
   @extend .button-style;
+  display: inline-block;
+  text-decoration: none;
+  vertical-align: top;
+  position: relative;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  &:active {
+    // top: 2px;
+  }
   &:hover, &:visited, &:focus{
     text-decoration: none;
+    color: #666;
   }
   @include transition(0.5s);
   &.large{padding: 15px 35px;font-size: 18px;}
-  &.small{padding: 5px 15px;}
+  &.small{padding: 5px 14px;font-size: 12px;}
   &.xsmall{padding: 3px 10px;font-size: 12px;}
   &.full{display: block;width: 100%;}
   &.text-info{box-shadow: none;}
@@ -79,12 +89,20 @@
   //   &.disable, &:disabled{opacity: 0.3;}
   //   &:hover, &:active{color: $gray6; background-color: $gray5;}
   // }
+  &.tee-grey {
+    $color: #333;
+    color: $color;
+    background-color: #f5f5f5;
+    &.disable, &:disabled{opacity: 0.3;cursor: no-drop;}
+    &:hover{background-color: $gray3;color: #fff;}
+    &:active, &.active{background-color: $gray1;}
+  }
 }
 
 .button-outline{
   @extend .button-style;
   background: #fff;
-  padding: 10px 24px;
+  padding: 6px 16px 7px;
   border: 1px solid $gray5;
   &:hover, &:visited, &:focus{
     color: #666;
@@ -92,7 +110,7 @@
   }
   @include transition(0.3s);
   &.large{padding: 14px 34px;font-size: 18px;}
-  &.small{padding: 4px 14px;}
+  &.small{padding: 4px 14px;font-size: 12px;}
   &.xsmall{padding: 2px 9px;font-size: 12px;}
   &.full{display: block;width: 100%;}
 

@@ -1,0 +1,84 @@
+.checkbox-style{
+  input{
+    height: 0;
+    width: 0;
+    opacity: 0;
+  }
+  .input:before{
+    position: absolute;
+    content: '';
+    display: inline-block;
+    top: 1px;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    border: 1px solid $red2;
+    cursor: pointer;
+    color: #fff;
+    @include transition(0.3s);
+  }
+
+  input:checked ~ .input:before{
+    content: "\f00c";
+    font-family: FontAwesome;
+    font-size: 12px;
+    background: $red2;
+    border: 1px solid $red2;
+    cursor: pointer;
+    text-align: center;
+    line-height: 17px;
+  }
+
+  input[disabled] ~ .input:before {
+    background: #ececec;
+    border: 1px solid #ccc;
+    cursor: not-allowed;;
+  }
+}
+
+// Check with label
+.form-input-checkbox{
+  margin-bottom: 20px;
+  label{
+    position: relative;
+    padding-left: 30px;
+    font-size: 14px;
+    font-weight: normal;
+    cursor: pointer;
+    display: block;
+    margin-bottom: 10px;
+  }
+  label:hover > .input:before{
+    border: 1px solid $red2;
+  }
+
+  label:hover > input[disabled] ~ .input:before {
+    background: #ececec;
+    border: 1px solid #ccc;
+    cursor: not-allowed;;
+  }
+
+  label.disabled {
+    color: #999;
+  }
+
+  &.inline label{
+    display: inline-block;
+    margin-right: 15px;
+  }
+  @extend .checkbox-style;
+}
+
+// Checkbox only
+.input-checkbox{
+  margin: 0;
+  position: relative;
+  height: 21px;
+  width: 21px;
+  label{margin: 0;}
+  label:hover > .input:before{
+    border: 1px solid $red2;
+  }
+  @extend .checkbox-style;
+}

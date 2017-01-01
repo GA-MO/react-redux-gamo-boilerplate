@@ -1,0 +1,27 @@
+.text-label{
+	background-color: $gray2;
+	padding: 2px 8px;
+  border-radius: 3px;
+  color: #fff;
+	font-size: 14px;
+  &.red{
+    $color: #fff;
+    color: $color;
+    background-color: $red2;
+  }
+  &.black {
+    $color: #fff;
+    color: $color;
+    background-color: #000;
+  }
+  &.green{
+    $color: #fff;
+    color: $color;
+    background-color: $green2;
+  }
+  &.blue{
+    $color: #fff;
+    color: $color;
+    background-color: $blue2;
+  }
+}

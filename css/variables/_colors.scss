@@ -1,0 +1,89 @@
+$text-color: #444444;
+$link-color: #e64946;
+
+$tmv: #f5bb2e;
+$tvs: #f02f94;
+$tol: #00a0c6;
+$light-green: #57aa7a;
+$light-background: #f8f8f8;
+$dark-sky-blue: #54a1dd;
+$silver: #d1dadd;
+$dark-background: #393d41;
+$dark-blue: #213449;
+$light-border: #ececec;
+$subheader: #878787;
+$header: #4a4a4a;
+$primary: #be493e;
+
+
+//gray color
+$gray1: #4F4F4F;
+$gray2: #717374;
+$gray3: #95989A;
+$gray4: #AAACAE;
+$gray5: #D5D6D7;
+$gray6: #F0F0F0;
+$gray7: #F8F8F8;
+.gray1{color: $gray1;}
+.gray2{color: $gray2;}
+.gray3{color: $gray3;}
+.gray4{color: $gray4;}
+.gray5{color: $gray5;}
+.gray6{color: $gray6;}
+.gray7{color: $gray7;}
+.bg-gray1{background: $gray1; color: #fff;}
+.bg-gray2{background: $gray2; color: #fff;}
+.bg-gray3{background: $gray3; color: #fff;}
+.bg-gray4{background: $gray4; color: #fff;}
+.bg-gray5{background: $gray5; color: #fff;}
+.bg-gray6{background: $gray6; color: #fff;}
+.bg-gray7{background: $gray7; color: #fff;}
+
+//red
+$red1: #ad1a1a;
+$red2: #d32f2f;
+$red3: #ef5350;
+$red4: #F8E4E6;
+.red1{color: $red1;}
+.red2, .color-red{color: $red2;}
+.red3{color: $red3;}
+.red4{color: $red4;}
+.bg-red1{background: $red1; color: #fff;}
+.bg-red2, .bg-red{background: $red2; color: #fff;}
+.bg-red3{background: $red3; color: #fff;}
+.bg-red4{background: $red4; color: #fff;}
+
+//green
+$green1: #2e7d32;
+$green2: #43a047;
+$green3: #66bb6a;
+$green4: #ECF9F4;
+.green1{color: $green1;}
+.green2, .color-green{color: $green2;}
+.green3{color: $green3;}
+.green4{color: $green4;}
+.bg-green1{background: $green1; color: #fff;}
+.bg-green2, .bg-green{background: $green2; color: #fff;}
+.bg-green3{background: $green3; color: #fff;}
+.bg-green4{background: $green4; color: #fff;}
+
+//cyan
+$blue1: #00bcd4;
+$blue2: #26c6da;
+$blue3: #4dd0e1;
+.blue1{color: $blue1;}
+.blue2, .color-blue{color: $blue2;}
+.blue3{color: $blue3;}
+.bg-blue1{background: $blue1; color: #fff;}
+.bg-blue2, .bg-blue{background: $blue2; color: #fff;}
+.bg-blue3{background: $blue3; color: #fff;}
+
+//pink
+$pink: #EB7F9B;
+.pink, .color-pink{color: $pink;}
+.bg-pink{background: $pink; color: #fff;}
+
+//yellow
+$yellow: #FDC54D;
+.yellow, .color-yellow{color: $yellow;}
+.bg-yellow{background: $yellow; color: #fff;}

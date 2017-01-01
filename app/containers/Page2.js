@@ -28,11 +28,10 @@ export default class Page2 extends React.Component {
   render() {
     console.log('PAGE2', this.props);
     return (
-      <div className="text-center">
+      <div className="_center">
         <h1>Page2</h1>
-        <a href="javascript:;" onClick={() => this.props.actions.goToPage('style-guide')} className="btn btn-default">Go Page3</a>
+        <a href="javascript:;" onClick={() => this.props.actions.goToPage('style-guide')} className="button-outline">Go Page3</a>
       </div>
     );
   }
 }
-

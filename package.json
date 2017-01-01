@@ -1,89 +1,90 @@
 {
-    "name": "MyApp",
-    "version": "1.0.0",
-    "description": "",
-    "scripts": {
-        "dev": "better-npm-run dev",
-        "build": "npm run clean && better-npm-run build",
-        "clean": "better-npm-run clean",
-        "test": "better-npm-run test"
+  "name": "MyApp",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "better-npm-run dev",
+    "build": "npm run clean && better-npm-run build",
+    "clean": "better-npm-run clean",
+    "test": "better-npm-run test"
+  },
+  "betterScripts": {
+    "dev": {
+      "command": "node devServer.js  --config webpack.config.dev.js",
+      "env": {
+        "NODE_ENV": "development"
+      }
     },
-    "betterScripts": {
-        "dev": {
-            "command": "node devServer.js  --config webpack.config.dev.js",
-            "env": {
-                "NODE_ENV": "development"
-            }
-        },
-        "build": {
-            "command": "webpack --config webpack.config.production.js",
-            "env": {
-                "NODE_ENV": "production"
-            }
-        },
-        "test": {
-            "command": "mocha ./test/*.js --compilers js:babel-register --watch"
-        },
-        "clean": {
-            "command": "rimraf dist"
-        }
+    "build": {
+      "command": "webpack --config webpack.config.production.js",
+      "env": {
+        "NODE_ENV": "production"
+      }
     },
-    "dependencies": {
-        "es6-promise": "^3.2.1",
-        "history": "^2.1.1",
-        "isomorphic-fetch": "^2.2.1",
-        "jquery": "^3.1.0",
-        "react": "^15.4.1",
-        "react-addons-css-transition-group": "^15.1.0",
-        "react-addons-transition-group": "^15.3.1",
-        "react-dom": "^15.4.1",
-        "react-redux": "^4.2.1",
-        "react-router": "^2.4.0",
-        "react-router-redux": "^4.0.4",
-        "redux": "^3.2.1",
-        "redux-form": "^5.2.5",
-        "redux-logger": "^2.6.1",
-        "redux-thunk": "^2.1.0"
+    "test": {
+      "command": "mocha ./test/*.js --compilers js:babel-register --watch"
     },
-    "devDependencies": {
-        "babel-cli": "^6.5.1",
-        "babel-core": "^6.3.15",
-        "babel-eslint": "^6.1.2",
-        "babel-loader": "^6.2.4",
-        "babel-plugin-transform-decorators-legacy": "^1.3.4",
-        "babel-preset-es2015": "^6.3.13",
-        "babel-preset-react": "^6.3.13",
-        "babel-preset-react-hmre": "^1.0.1",
-        "babel-preset-stage-0": "^6.5.0",
-        "babel-register": "^6.3.13",
-        "better-npm-run": "^0.0.13",
-        "compression-webpack-plugin": "^0.3.1",
-        "cross-env": "^1.0.7",
-        "css-loader": "^0.23.1",
-        "eslint": "^3.7.1",
-        "eslint-config-airbnb": "^12.0.0",
-        "eslint-import-resolver-webpack": "^0.5.1",
-        "eslint-plugin-import": "^1.16.0",
-        "eslint-plugin-jsx-a11y": "^2.2.2",
-        "eslint-plugin-react": "^6.3.0",
-        "eventsource-polyfill": "^0.9.6",
-        "expect": "^1.20.1",
-        "express": "^4.14.0",
-        "extract-text-webpack-plugin": "^1.0.1",
-        "file-loader": "^0.8.5",
-        "jsdom": "^5.6.1",
-        "mocha": "^2.5.3",
-        "node-libs-browser": "^0.5.2",
-        "node-sass": "^3.4.2",
-        "react-addons-test-utils": "^0.14.7",
-        "react-hot-loader": "^3.0.0-beta.1",
-        "rimraf": "^2.5.2",
-        "sass-loader": "^3.2.0",
-        "style-loader": "^0.13.1",
-        "url-loader": "^0.5.7",
-        "webpack": "^1.13.1",
-        "webpack-dev-middleware": "^1.2.0",
-        "webpack-dev-server": "^1.14.0",
-        "webpack-hot-middleware": "^2.2.0"
+    "clean": {
+      "command": "rimraf dist"
     }
+  },
+  "dependencies": {
+    "es6-promise": "^3.2.1",
+    "history": "^2.1.1",
+    "isomorphic-fetch": "^2.2.1",
+    "jquery": "^3.1.0",
+    "react": "^15.4.1",
+    "react-addons-css-transition-group": "^15.1.0",
+    "react-addons-transition-group": "^15.3.1",
+    "react-dom": "^15.4.1",
+    "react-redux": "^4.2.1",
+    "react-router": "^2.4.0",
+    "react-router-redux": "^4.0.4",
+    "redux": "^3.2.1",
+    "redux-form": "^5.2.5",
+    "redux-logger": "^2.6.1",
+    "redux-thunk": "^2.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.5.1",
+    "babel-core": "^6.3.15",
+    "babel-eslint": "^6.1.2",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-react-hmre": "^1.0.1",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-register": "^6.3.13",
+    "better-npm-run": "^0.0.13",
+    "compression-webpack-plugin": "^0.3.1",
+    "cross-env": "^1.0.7",
+    "css-loader": "^0.23.1",
+    "eslint": "^3.7.1",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-import-resolver-webpack": "^0.5.1",
+    "eslint-plugin-babel": "^4.0.0",
+    "eslint-plugin-import": "^1.16.0",
+    "eslint-plugin-jsx-a11y": "^2.2.2",
+    "eslint-plugin-react": "^6.3.0",
+    "eventsource-polyfill": "^0.9.6",
+    "expect": "^1.20.1",
+    "express": "^4.14.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
+    "jsdom": "^5.6.1",
+    "mocha": "^2.5.3",
+    "node-libs-browser": "^0.5.2",
+    "node-sass": "^3.4.2",
+    "react-addons-test-utils": "^0.14.7",
+    "react-hot-loader": "^3.0.0-beta.1",
+    "rimraf": "^2.5.2",
+    "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.1",
+    "webpack-dev-middleware": "^1.2.0",
+    "webpack-dev-server": "^1.14.0",
+    "webpack-hot-middleware": "^2.2.0"
+  }
 }

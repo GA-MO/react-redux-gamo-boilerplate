@@ -65,6 +65,73 @@ export default class StyleGuide extends React.Component {
 
 
             // =======================================================================
+            // TEXT LABEL
+            // =======================================================================
+
+
+
+          }
+          <div className="section-style">
+            <h1>Text Label</h1>
+            <p>Add Class <code>.black</code>, <code>.gray</code>, <code>.red</code>, <code>.green</code> or <code>.blue</code> for button color.</p>
+            <span className="text-label black">Label</span>
+            <span className="text-label">Label</span>
+            <span className="text-label red">Label</span>
+            <span className="text-label green">Label</span>
+            <span className="text-label blue">Label</span>
+            <br />
+            <br />
+            <p>Lorem ipsum dolor sit amet, <span className="text-label red">consectetur</span> adipisicing elit. Sunt iusto assumenda voluptatibus perferendis obcaecati blanditiis recusandae doloremque dolorem excepturi, dolorum officia repellendus dolor eum fugit nulla. Ea alias quaerat, minus!</p>
+            <br />
+            <pre>
+              <code>
+                {`<span className="text-label">Label</span>`}
+              </code>
+            </pre>
+          </div>
+          <br />
+          {
+
+
+
+            // =======================================================================
+            // BOX MESSAGE
+            // =======================================================================
+
+
+
+          }
+          <div className="section-style">
+            <h1>Box Message</h1>
+            <p>Add Class <code>.loading</code>, <code>.warning</code>, <code>.error</code>, and <code>.success</code> for box color.</p>
+            <div className="box-message-info">
+              Helow welcom to my site.
+            </div>
+            <div className="box-message-info loading">
+              Helow welcom to my site.
+            </div>
+            <div className="box-message-info warning">
+              Helow welcom to my site.
+            </div>
+            <div className="box-message-info error">
+              Helow welcom to my site.
+            </div>
+            <div className="box-message-info success">
+              Helow welcom to my site.
+            </div>
+            <br />
+            <pre>
+              <code>
+                {`<span className="text-label">Label</span>`}
+              </code>
+            </pre>
+          </div>
+          <br />
+          {
+
+
+
+            // =======================================================================
             // BUTTON STYLE
             // =======================================================================
 
@@ -298,15 +365,14 @@ export default class StyleGuide extends React.Component {
 
             }
             <b>Form validation</b>
-            <br />
+            <p>Add Class <code>.loading</code>, <code>.warning</code>, <code>.error</code> or <code>.success</code> for input status.</p>
             <br />
             <div className="row">
               <div className="D-3">
                 <div className="box-form-input">
                   <label className="form-label">Text</label>
-                  <div className="wrap-form-input">
+                  <div className="wrap-form-input loading">
                     <input className="form-input" placeholder="input text" />
-                    <div className="validation-label">Validation message field</div>
                   </div>
                 </div>
               </div>
@@ -331,18 +397,18 @@ export default class StyleGuide extends React.Component {
               <div className="D-3">
                 <div className="box-form-input">
                   <label className="form-label">Text</label>
-                  <div className="wrap-form-input success">
+                  <div className="wrap-form-input success show-icon">
                     <input className="form-input" placeholder="input text" />
                     <div className="validation-label">Validation message field</div>
                   </div>
                 </div>
               </div>
             </div>
-            
+
             <pre>
               <code className="html">
                 {`
-                  // Clase name = error, warning, success
+                  // Class name = loading, error, warning, success
 
                   <div className="box-form-input">
                     <label className="form-label">Text</label>
@@ -682,4 +748,3 @@ export default class StyleGuide extends React.Component {
     );
   }
 }
-

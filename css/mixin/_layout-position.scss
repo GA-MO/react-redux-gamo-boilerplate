@@ -1,0 +1,20 @@
+@mixin center($width: null, $height: null) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @if not $width and not $height {
+    transform: translate(-50%, -50%);
+  } @else if $width and $height {
+    width: $width;
+    height: $height;
+    margin: -($width / 2) #{0 0} -($height / 2)
+  } @else if not $height {
+    margin-left: -($width / 2);
+    transform: translateY(-50%);
+    width: $width;
+  } @else {
+    margin-top: -($height / 2);
+    transform: translateX(-50%);
+    height: $height;
+  }
+}

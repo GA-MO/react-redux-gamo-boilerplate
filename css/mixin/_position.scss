@@ -1,0 +1,41 @@
+@mixin position($position: relative, $coordinates: null null null null) {
+  @if type-of($position) == list {
+    $coordinates: $position;
+    $position: relative;
+  }
+
+  $coordinates: unpack($coordinates);
+
+  $offsets: (
+    top:    nth($coordinates, 1),
+    right:  nth($coordinates, 2),
+    bottom: nth($coordinates, 3),
+    left:   nth($coordinates, 4)
+  );
+
+  position: $position;
+
+  @each $offset, $value in $offsets {
+    @if is-length($value) {
+      #{$offset}: $value;
+    }
+  }
+}
+
+@function unpack($shorthand) {
+  @if length($shorthand) == 1 {
+    @return nth($shorthand, 1) nth($shorthand, 1) nth($shorthand, 1) nth($shorthand, 1);
+  } @else if length($shorthand) == 2 {
+    @return nth($shorthand, 1) nth($shorthand, 2) nth($shorthand, 1) nth($shorthand, 2);
+  } @else if length($shorthand) == 3 {
+    @return nth($shorthand, 1) nth($shorthand, 2) nth($shorthand, 3) nth($shorthand, 2);
+  } @else {
+    @return $shorthand;
+  }
+}
+
+@function is-length($value) {
+  @return type-of($value) != "null" and (str-slice($value + "", 1, 4) == "calc"
+       or index(auto inherit initial 0, $value)
+       or (type-of($value) == "number" and not(unitless($value))));
+}
