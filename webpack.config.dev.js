@@ -8,6 +8,7 @@ module.exports = {
   entry: {
     bundle: [
       // necessary for hot reloading with IE:
+      'babel-polyfill',
       'eventsource-polyfill',
       'react-hot-loader/patch',
       // listen to code updates emitted by hot middleware:
