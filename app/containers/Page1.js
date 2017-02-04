@@ -50,7 +50,6 @@ export default class Page1 extends Component {
   }
 
   render() {
-    console.log("PAGE1", this.props);
     const {fields: {firstName, lastName, email}, resetForm, handleSubmit, submitting} = this.props;
     return (
       <div className="container">

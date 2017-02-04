@@ -1,10 +1,12 @@
 
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router'
+import Helmet from 'react-helmet';
 
 const App = (props) => {
   return (
     <div>
+      <Helmet title="React Redux gomo boilerplate" />
       <header className="main-header">
         <nav>
           <ul className="navigation">

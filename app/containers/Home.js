@@ -24,15 +24,14 @@ export default class Home extends React.Component {
   };
 
   render() {
-    console.log("HOME", this.props);
     return (
       <div className="container">
         <div className="_center">
           <div className="row">
-            <div className="D-6">
+            <div className="D-7">
               <div className="_left">
                 <h2>GAMO Boilerplate</h2>
-                <p>This is react starter boilerplate for client</p>
+                <p>React starter boilerplate for client and server rendering (Univarsal)</p>
                 <h4>Features</h4>
                 <ul>
                   <li>React</li>
@@ -47,13 +46,18 @@ export default class Home extends React.Component {
                 <pre><code>
                   $ cd react-redux-gamo-boilerplate<br />
                   $ npm install<br />
-                  $ npm start
+                  $ npm run dev
                 </code></pre>
-                <h4>Build to production</h4>
+                <h4>Client: Build to production</h4>
+                <pre><code>
+                  $ npm run build:client<br />
+                  ../static/<br />
+                  ../app.html
+                </code></pre>
+                <h4>Server Rendering: Build to production</h4>
                 <pre><code>
                   $ npm run build<br />
-                  ../dist/<br />
-                  ../app.html
+                  $ npm run start
                 </code></pre>
                 <h4>Testing</h4>
                 <pre><code>

@@ -20,7 +20,7 @@ module.exports = {
   },
 
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'static'),
     filename: 'bundle.js',
   },
 
@@ -30,6 +30,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
+        BUILD_ENV: JSON.stringify(`${process.env.BUILD_ENV}`),
       },
     }),
     new webpack.optimize.DedupePlugin(),
@@ -64,7 +65,7 @@ module.exports = {
     ],
   },
   resolve: {
-    modulesDirectories: ['app', 'src', 'node_modules'],
+    modulesDirectories: ['app', 'src', 'configs', 'node_modules'],
     extensions: ['', '.js', '.jsx', '.json'],
   },
 }

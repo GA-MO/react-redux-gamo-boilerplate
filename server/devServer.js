@@ -1,7 +1,7 @@
 var path = require('path');
 var express = require('express');
 var webpack = require('webpack');
-var config = require('./webpack.config.dev');
+var config = require('../webpack.config.dev');
 
 var app = express();
 var compiler = webpack(config);
@@ -31,7 +31,7 @@ app.use(require('webpack-hot-middleware')(compiler));
 app.use('/static', express.static('static'));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, '../index.html'));
 });
 
 app.listen(3000, (err) => {

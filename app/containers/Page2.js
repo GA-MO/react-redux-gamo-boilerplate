@@ -1,7 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as Action from 'actions/action'
+import * as Action from '../actions/action'
 
 // State
 function mapStateToProps(state) {
@@ -26,7 +26,6 @@ export default class Page2 extends React.Component {
   };
 
   render() {
-    console.log('PAGE2', this.props);
     return (
       <div className="_center">
         <h1>Page2</h1>

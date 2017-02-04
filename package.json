@@ -5,18 +5,35 @@
   "scripts": {
     "dev": "better-npm-run dev",
     "build": "npm run clean && better-npm-run build",
+    "build:client": "npm run clean && better-npm-run build:client",
+    "start": "better-npm-run start",
     "clean": "better-npm-run clean",
     "test": "better-npm-run test"
   },
   "betterScripts": {
     "dev": {
-      "command": "node devServer.js  --config webpack.config.dev.js",
+      "command": "node ./server/devServer.js  --config webpack.config.dev.js",
       "env": {
-        "NODE_ENV": "development"
+        "NODE_ENV": "development",
+        "BUILD_ENV": "server"
       }
     },
     "build": {
       "command": "webpack --config webpack.config.production.js",
+      "env": {
+        "NODE_ENV": "production",
+        "BUILD_ENV": "server"
+      }
+    },
+    "build:client": {
+      "command": "webpack --config webpack.config.production.js",
+      "env": {
+        "NODE_ENV": "production",
+        "BUILD_ENV": "client"
+      }
+    },
+    "start": {
+      "command": "node ./server/index.js",
       "env": {
         "NODE_ENV": "production"
       }
@@ -25,7 +42,7 @@
       "command": "mocha ./test/*.js --compilers js:babel-register --watch"
     },
     "clean": {
-      "command": "rimraf dist"
+      "command": "rimraf static"
     }
   },
   "dependencies": {
@@ -78,6 +95,7 @@
     "node-libs-browser": "^0.5.2",
     "node-sass": "^3.4.2",
     "react-addons-test-utils": "^0.14.7",
+    "react-helmet": "^4.0.0",
     "react-hot-loader": "^3.0.0-beta.1",
     "rimraf": "^2.5.2",
     "sass-loader": "^3.2.0",

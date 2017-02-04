@@ -1,5 +1,5 @@
 # react-redux-gamo-boilerplate
-This is react starter boilerplate for client
+React starter boilerplate for client and server rendering (Univarsal)
 # Features
 
 - [React](https://github.com/facebook/react)
@@ -15,15 +15,22 @@ This is react starter boilerplate for client
 ```
 $ cd react-redux-gamo-boilerplate
 $ npm install
-$ npm dev  
+$ npm run dev  
 ```
 
-# Build to production
+# Client: Build to production
+
+```
+$ npm run build:client
+../static/
+../app.html
+```
+
+# Server rendering: Build to production
 
 ```
 $ npm run build
-../dist/
-../app.html
+$ npm run start
 ```
 
 # Testing

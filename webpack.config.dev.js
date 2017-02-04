@@ -32,6 +32,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(`${process.env.NODE_ENV}`),
+        BUILD_ENV: JSON.stringify(`${process.env.BUILD_ENV}`),
       },
     }),
   ],
@@ -44,7 +45,7 @@ module.exports = {
     ],
   },
   resolve: {
-    modulesDirectories: ['app', 'src', 'node_modules'],
+    modulesDirectories: ['app', 'src', 'configs', 'node_modules'],
     extensions: ['', '.js', '.jsx', '.json'],
   },
 };
