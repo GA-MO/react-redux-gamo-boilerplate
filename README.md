@@ -1,5 +1,5 @@
 # react-redux-gamo-boilerplate
-React starter boilerplate for client and server rendering (Univarsal)
+React starter boilerplate for client and server rendering (Universal)
 # Features
 
 - [React](https://github.com/facebook/react)
