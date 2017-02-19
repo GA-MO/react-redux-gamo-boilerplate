@@ -4,10 +4,8 @@ React starter boilerplate for client and server rendering (Universal)
 
 - [React](https://github.com/facebook/react)
 - [React Router](https://github.com/rackt/react-router)
-- [Redux form](https://github.com/erikras/redux-form)
-- [Redux](https://github.com/rackt/redux)
 - [React Router Redux](https://github.com/reactjs/react-router-redux)
-- [React hot reload](https://github.com/gaearon/react-hot-loader)
+- [Redux](https://github.com/rackt/redux)
 - [Node sass](https://github.com/sass/node-sass)
 - [Mocha](https://github.com/mochajs/mocha)
 
