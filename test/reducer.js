@@ -3,23 +3,23 @@ import todo from '../app/reducers/todo'
 
 describe('Todo reducer', () => {
   it('Add todo', () => {
-    let stateAfter = [
+    const stateAfter = [
       {
         id: 0,
         todo: 'Hello',
-      }
+      },
     ]
 
-    let action = {
+    const action = {
       type: 'ADD_TODO',
-      data: 'Hello'
+      data: 'Hello',
     }
 
     expect(todo([], action)).toEqual(stateAfter)
   })
 
   it('Delete todo', () => {
-    let stateBefore = [
+    const stateBefore = [
       {
         id: 0,
         todo: 'Hello 1',
@@ -27,21 +27,21 @@ describe('Todo reducer', () => {
       {
         id: 1,
         todo: 'Hello 2',
-      }
+      },
     ]
 
-    let stateAfter = [
+    const stateAfter = [
       {
         id: 0,
         todo: 'Hello 1',
-      }
+      },
     ]
 
-    let action = {
+    const action = {
       type: 'DELETE_TODO',
-      id: 1
-    } 
+      id: 1,
+    },
 
     expect(todo(stateBefore, action)).toEqual(stateAfter)
   })
-})
+});

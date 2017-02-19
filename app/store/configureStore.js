@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import { routerMiddleware } from 'react-router-redux'
-import thunk from 'redux-thunk';
+// import thunk from 'redux-thunk';
 import createLogger from 'redux-logger'
 import rootReducer from '../reducers'
 import middleware from '../actions/middleware';
@@ -13,15 +13,8 @@ export default (initialState, history) => {
   const store = createStore(
     rootReducer,
     initialState,
-    applyMiddleware(...middlewares)
+    applyMiddleware(...middlewares),
   )
-
-  if (module.hot) {
-    module.hot.accept('../reducers/index', () => {
-      const nextRootReducer = require('../reducers/index').default;
-      store.replaceReducer(nextRootReducer);
-    })
-  }
 
   return store
 }

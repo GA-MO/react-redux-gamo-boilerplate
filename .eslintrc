@@ -9,6 +9,8 @@
   "plugins": [
     "babel",
     "react",
+    "promise",
+    "import"
   ],
   "rules": {
     "semi": 0,

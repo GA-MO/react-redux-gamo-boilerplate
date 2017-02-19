@@ -3,12 +3,11 @@ var webpack = require('webpack')
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  // devtool: 'source-map',
-  // entry: './app/index.js',
+  devtool: 'source-map',
   entry: {
     app: [
       'babel-polyfill',
-      path.join(__dirname, 'app/index.js'),
+      './app/index.js',
     ],
     vendor: [
       'react',
@@ -25,18 +24,14 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
         BUILD_ENV: JSON.stringify(`${process.env.BUILD_ENV}`),
       },
     }),
-    new webpack.optimize.DedupePlugin(),
     new webpack.ProvidePlugin({
       React: 'react',
-      $: 'jquery',
       _: 'lodash',
     }),
     new webpack.optimize.UglifyJsPlugin({
@@ -45,27 +40,69 @@ module.exports = {
       },
       minimize: true,
     }),
-    new webpack.NoErrorsPlugin(),
-    new ExtractTextPlugin('style.css'),
+    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false,
+    }),
+    new ExtractTextPlugin({
+      filename: 'style.css',
+      disable: false,
+      allChunks: false,
+    }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: Infinity,
-      path: path.join(__dirname, 'dist'),
+      path: path.join(__dirname, 'static'),
       filename: '[name].js',
     }),
   ],
 
   module: {
-    loaders: [
-      { test: /\.jsx?$/, loaders: ['babel-loader'], exclude: /node_modules/, include: __dirname },
-      { test: /\.css$/, loader: ExtractTextPlugin.extract(['css', 'sass?outputStyle=compressed']) },
-      { test: /\.scss$/, loader: ExtractTextPlugin.extract(['css', 'sass?outputStyle=compressed']) },
-      { test: /\.(woff2?|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=100000&name=fonts/[name].[ext]' },
-      { test: /\.(png|jpg)$/, loader: 'url-loader?limit=10000&name=img/[name].[ext]' },
+    rules: [
+      {
+        test: /\.jsx?$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader',
+          publicPath: '/static',
+        }),
+      },
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true,
+              },
+            },
+          ],
+          publicPath: '/static',
+        }),
+      },
+      {
+        test: /\.(woff2?|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'url-loader?limit=100000&name=fonts/[name].[ext]',
+      },
+      {
+        test: /\.(png|jpg)$/,
+        loader: 'url-loader?limit=10000&name=img/[name].[ext]',
+      },
     ],
   },
   resolve: {
-    modulesDirectories: ['app', 'src', 'configs', 'node_modules'],
-    extensions: ['', '.js', '.jsx', '.json'],
+    modules: ['node_modules', 'app'],
+    extensions: ['.js', '.jsx', '.json'],
   },
 }
