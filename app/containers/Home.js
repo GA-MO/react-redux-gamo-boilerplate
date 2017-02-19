@@ -35,10 +35,8 @@ export default class Home extends React.Component {
                 <h4>Features</h4>
                 <ul>
                   <li>React</li>
-                  <li>Redux</li>
-                  <li>Redux form</li>
                   <li>React Router</li>
-                  <li>Hot reload</li>
+                  <li>Redux</li>
                   <li>Sass</li>
                   <li>Mocha</li>
                 </ul>
