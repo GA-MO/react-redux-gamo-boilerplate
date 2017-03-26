@@ -7,12 +7,9 @@ export default class Page1 extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="row _center">
-          <div className="D-6 _left">
-           
-          </div>
-        </div>
+      <div className="_center">
+        <br />
+        <h1>Hello, Page1</h1>
       </div>
     )
   }

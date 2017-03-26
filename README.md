@@ -1,4 +1,4 @@
-# react-redux-gamo-boilerplate
+# react-redux-boilerplate
 React starter boilerplate for client and server rendering (Universal)
 # Features
 
@@ -11,7 +11,6 @@ React starter boilerplate for client and server rendering (Universal)
 
 # Getting Started
 ```
-$ cd react-redux-gamo-boilerplate
 $ npm install
 $ npm run dev  
 ```
@@ -20,8 +19,8 @@ $ npm run dev
 
 ```
 $ npm run build:client
-../static/
-../app.html
+../build/
+deploy folder build
 ```
 
 # Server rendering: Build to production

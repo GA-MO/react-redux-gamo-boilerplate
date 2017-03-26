@@ -1,13 +1,15 @@
-var path = require('path')
-var webpack = require('webpack')
+
+var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var projectPath = require('./path');
 
 module.exports = {
   devtool: 'source-map',
   entry: {
     app: [
       'babel-polyfill',
-      './app/index.js',
+      projectPath.indexFile,
     ],
     vendor: [
       'react',
@@ -19,8 +21,9 @@ module.exports = {
   },
 
   output: {
-    path: path.join(__dirname, 'static'),
-    filename: 'bundle.js',
+    path: projectPath.build,
+    publicPath: '',
+    filename: 'js/bundle.js',
   },
 
   plugins: [
@@ -45,16 +48,32 @@ module.exports = {
       minimize: true,
       debug: false,
     }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: projectPath.htmlTemplate,
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      },
+    }),
     new ExtractTextPlugin({
-      filename: 'style.css',
+      filename: 'css/style.css',
       disable: false,
       allChunks: false,
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: Infinity,
-      path: path.join(__dirname, 'static'),
-      filename: '[name].js',
+      path: projectPath.build,
+      filename: 'js/[name].js',
     }),
   ],
 
@@ -70,7 +89,7 @@ module.exports = {
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: 'css-loader',
-          publicPath: '/static',
+          publicPath: '',
         }),
       },
       {
@@ -88,16 +107,16 @@ module.exports = {
               },
             },
           ],
-          publicPath: '/static',
+          publicPath: '',
         }),
       },
       {
         test: /\.(woff2?|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url-loader?limit=100000&name=fonts/[name].[ext]',
+        loader: 'url-loader?limit=1000&name=fonts/[name].[ext]',
       },
       {
         test: /\.(png|jpg)$/,
-        loader: 'url-loader?limit=10000&name=img/[name].[ext]',
+        loader: 'url-loader?limit=1000&name=img/[name].[ext]',
       },
     ],
   },
