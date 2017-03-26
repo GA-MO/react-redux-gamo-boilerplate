@@ -28,8 +28,9 @@ export default class Page2 extends React.Component {
   render() {
     return (
       <div className="_center">
+        <br />
         <h1>Page2</h1>
-        <a href="javascript:;" onClick={() => this.props.actions.goToPage('style-guide')} className="button-outline">Go Page3</a>
+        <a href="javascript:;" onClick={() => this.props.actions.goToPage('style-guide')} className="button-outline">Go Style guide</a>
       </div>
     );
   }

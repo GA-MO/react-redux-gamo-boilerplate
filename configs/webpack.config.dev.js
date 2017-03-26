@@ -1,18 +1,20 @@
-var path = require('path');
+
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var projectPath = require('./path');
 
 module.exports = {
   entry: [
     'babel-polyfill',
     'webpack-hot-middleware/client',
-    './app/index.js',
+    projectPath.indexFile,
   ],
   output: {
-    path: path.resolve(__dirname, 'static'),
-    publicPath: '/static/',
-    filename: 'bundle.js',
+    path: projectPath.public,
+    publicPath: '/',
+    filename: 'js/bundle.js',
   },
-  devtool: 'source-map',
+  devtool: 'cheap-module-source-map',
   plugins: [
     new webpack.ProvidePlugin({
       React: 'react',
@@ -23,6 +25,10 @@ module.exports = {
         NODE_ENV: JSON.stringify(`${process.env.NODE_ENV}`),
         BUILD_ENV: JSON.stringify(`${process.env.BUILD_ENV}`),
       },
+    }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: projectPath.htmlTemplate,
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),

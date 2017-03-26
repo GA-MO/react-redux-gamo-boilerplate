@@ -6,7 +6,7 @@ import Helmet from 'react-helmet';
 const App = (props) => {
   return (
     <div>
-      <Helmet title="React Redux gomo boilerplate" />
+      <Helmet title="React Redux boilerplate" />
       <header className="main-header">
         <nav>
           <ul className="navigation">

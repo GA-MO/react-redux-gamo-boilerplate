@@ -16,15 +16,15 @@ const renderFullPage = (html, initialState) => {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         ${head.title.toString()}
-        <link rel="stylesheet" type="text/css" href="/static/style.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
       </head>
       <body>
         <div id="app">${html}</div>
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}; 
         </script>
-        <script src="/static/vendor.js"></script>
-        <script src="/static/bundle.js"></script>
+        <script src="js/vendor.js"></script>
+        <script src="js/bundle.js"></script>
       </body>
     </html>
   `;
