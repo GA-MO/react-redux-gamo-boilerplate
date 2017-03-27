@@ -44,7 +44,7 @@ compiler.plugin('done', function(stats) {
     console.log();
     console.log('   ' + chalk.cyan.bold(protocol + '://' + host + ':' + port + '/'));
     console.log();
-    // openBrowser(protocol + '://' + host + ':' + port + '/');
+    openBrowser(protocol + '://' + host + ':' + port + '/');
     isFirstCompile = false;
   }
 
