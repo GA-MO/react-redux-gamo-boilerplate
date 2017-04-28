@@ -3,13 +3,13 @@
 ----------------------*/
 $responsive:true;
 $container-width:1200px;
-$gap-colum:10px;
+$grid-gutter:10px;
 $width-breakpoints: (
   D: null, //Desktop
-  L: 1200, //Laptop
-  T: 992,  //Tablet
-  M: 768,  //Mobile
-  SM: 568  //Small Mobile
+  L: 1200px, //Laptop
+  T: 992px,  //Tablet
+  M: 768px,  //Mobile
+  SM: 568px  //Small Mobile
   // Other: xxx
 );
 /*--------------------
@@ -20,8 +20,8 @@ $width-breakpoints: (
   display: inline-block;
   letter-spacing: normal;
   min-height: 1px;
-  padding-left: $gap-colum;
-  padding-right: $gap-colum;
+  padding-left: $grid-gutter;
+  padding-right: $grid-gutter;
   vertical-align: top;
 }
 .container {
@@ -30,16 +30,16 @@ $width-breakpoints: (
   max-width: $container-width;
   margin-right: auto;
   margin-left: auto;
-  padding-left: $gap-colum;
-  padding-right: $gap-colum;
+  padding-left: $grid-gutter;
+  padding-right: $grid-gutter;
 }
 .container-fluid {
   margin-right: auto;
   margin-left: auto;
-  padding-left: $gap-colum;
-  padding-right: $gap-colum;
+  padding-left: $grid-gutter;
+  padding-right: $grid-gutter;
 }
-.row {margin-left: -$gap-colum;margin-right: -$gap-colum;letter-spacing: -0.33em;}
+.row {margin-left: -$grid-gutter;margin-right: -$grid-gutter;letter-spacing: -0.33em;}
 .row:before, .row:after{ content: " "; /*display: table;*/ }
 .row:after{clear: both;}
 .row-fluid {margin-left: 0px;margin-right: 0px;letter-spacing: -0.33em;}
@@ -63,10 +63,10 @@ $width-breakpoints: (
   }
 }
 
-@mixin breakpoint($breakpoint){
+@mixin BREAKPOINT($breakpoint){
   $width: map-get($width-breakpoints, $breakpoint);
   @if $width != null {
-    @media screen and (max-width: $width+px) {
+    @media screen and (max-width: $width) {
       @content;
     }
   } @else {
@@ -87,7 +87,7 @@ $width-breakpoints: (
     @include grid-layout($grid-name);
   }
   @else {
-    @include breakpoint($grid-name) {
+    @include BREAKPOINT($grid-name) {
       @if $responsive == true{
         @if $breakpoint <= 568 { .container{ max-width: 100%; } }
         @else if $breakpoint <= 768 { .container{ max-width: 100%; } }
