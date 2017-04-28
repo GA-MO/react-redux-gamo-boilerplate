@@ -4,6 +4,62 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var projectPath = require('./path');
 
+var plugins = [
+  new webpack.DefinePlugin({
+    'process.env': {
+      NODE_ENV: JSON.stringify('production'),
+      BUILD_ENV: JSON.stringify(`${process.env.BUILD_ENV}`),
+    },
+  }),
+  new webpack.ProvidePlugin({
+    React: 'react',
+    _: 'lodash',
+  }),
+  new webpack.optimize.UglifyJsPlugin({
+    compressor: {
+      warnings: false,
+    },
+    minimize: true,
+  }),
+  new webpack.NoEmitOnErrorsPlugin(),
+  new webpack.LoaderOptionsPlugin({
+    minimize: true,
+    debug: false,
+  }),
+  new ExtractTextPlugin({
+    filename: 'css/style.css',
+    disable: false,
+    allChunks: false,
+  }),
+  new webpack.optimize.CommonsChunkPlugin({
+    name: 'vendor',
+    minChunks: Infinity,
+    path: projectPath.build,
+    filename: 'js/[name].js',
+  }),
+]
+
+if (process.env.BUILD_ENV == 'client') {
+  plugins.push(
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: projectPath.htmlTemplate,
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      },
+    })
+  )
+}
+
 module.exports = {
   devtool: 'source-map',
   entry: {
@@ -26,56 +82,7 @@ module.exports = {
     filename: 'js/bundle.js',
   },
 
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production'),
-        BUILD_ENV: JSON.stringify(`${process.env.BUILD_ENV}`),
-      },
-    }),
-    new webpack.ProvidePlugin({
-      React: 'react',
-      _: 'lodash',
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compressor: {
-        warnings: false,
-      },
-      minimize: true,
-    }),
-    new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true,
-      debug: false,
-    }),
-    new HtmlWebpackPlugin({
-      inject: true,
-      template: projectPath.htmlTemplate,
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        keepClosingSlash: true,
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true,
-      },
-    }),
-    new ExtractTextPlugin({
-      filename: 'css/style.css',
-      disable: false,
-      allChunks: false,
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: Infinity,
-      path: projectPath.build,
-      filename: 'js/[name].js',
-    }),
-  ],
+  plugins: plugins,
 
   module: {
     rules: [
