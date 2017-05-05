@@ -1,6 +1,5 @@
 
 var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 var projectPath = require('./path');
 
 module.exports = {
@@ -11,7 +10,7 @@ module.exports = {
   ],
   output: {
     path: projectPath.public,
-    publicPath: '/',
+    publicPath: '',
     filename: 'js/bundle.js',
   },
   devtool: 'cheap-module-source-map',
@@ -25,10 +24,6 @@ module.exports = {
         NODE_ENV: JSON.stringify(`${process.env.NODE_ENV}`),
         BUILD_ENV: JSON.stringify(`${process.env.BUILD_ENV}`),
       },
-    }),
-    new HtmlWebpackPlugin({
-      inject: true,
-      template: projectPath.htmlTemplate,
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
