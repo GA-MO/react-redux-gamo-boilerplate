@@ -180,7 +180,7 @@ input.form-input{
   font-size: 14px;
   color: $gray1;
   line-height: 16px;
-  @include breakpoint('M'){
+  @include BREAKPOINT('M'){
     margin-top: 5px;
     font-size: 12px;
   }
