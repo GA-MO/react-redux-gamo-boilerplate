@@ -7,7 +7,8 @@ function resolvePath(pathName) {
 module.exports = {
   build: resolvePath('build'),
   public: resolvePath('public'),
-  htmlTemplate: resolvePath('public/index.html'),
+  htmlIndex: resolvePath('public/index.html'),
+  htmlTemplate: resolvePath('public/template.html'),
   src: resolvePath('app'),
   indexFile: resolvePath('app/index.js'),
   nodeModule: resolvePath('node_modules'),

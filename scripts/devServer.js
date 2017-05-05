@@ -83,7 +83,7 @@ app.use(require('webpack-hot-middleware')(compiler));
 app.use('/public', express.static('public'));
 
 app.get('*', (req, res) => {
-  res.sendFile(projectPath.htmlTemplate);
+  res.sendFile(projectPath.htmlIndex);
 });
 
 app.listen(port, (err) => {

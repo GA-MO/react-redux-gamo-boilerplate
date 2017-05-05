@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 
 export default class Page1 extends Component {
   static propTypes = {
-    fields: PropTypes.object.isRequired,
+    // fields: PropTypes.object.isRequired,
   }
 
   render() {
