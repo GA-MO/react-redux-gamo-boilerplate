@@ -7,7 +7,6 @@ const routes = (
   <Route path="/" component={App}>
     <IndexRoute component={Home} />
     <Route path="/page1" component={Page1} />
-    <Route path="/page1/:part/:part" component={Page1} />
     <Route path="/page2" component={Page2} />
     <Route path="/style-guide" component={StyleGuide} />
   </Route>
