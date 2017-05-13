@@ -1,8 +1,5 @@
 .DS_Store
 /node_modules
-/template/node_modules
-/lib
 yarn.lock
 yarn-error.log
 debug.log
-npm-debug.log

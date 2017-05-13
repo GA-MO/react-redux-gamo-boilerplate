@@ -1,36 +1,38 @@
 # react-redux-boilerplate
 React starter boilerplate for client and server rendering (Universal)
-# Features
 
-- [React](https://github.com/facebook/react)
-- [React Router](https://github.com/rackt/react-router)
-- [React Router Redux](https://github.com/reactjs/react-router-redux)
-- [Redux](https://github.com/rackt/redux)
-- [Node sass](https://github.com/sass/node-sass)
-- [Mocha](https://github.com/mochajs/mocha)
-
-# Getting Started
+## Install (new-react-app) to global:
+Package command to create react preject.
 ```
-$ npm install
-$ npm run dev  
+$ npm install -g new-react-app
 ```
 
-# Client: Build to production
+## Create new project:
+```
+$ new-react-app my-project
+```
 
+
+## You can run these commands in the project:
+#### Starts the development server.
+```
+$ npm run dev
+```
+#### (Client side) Bundles files for production.
 ```
 $ npm run build:client
-../build/
-deploy folder build
 ```
-
-# Server rendering: Build to production
-
+#### (Server side) Bundles files for production.
 ```
 $ npm run build
+```
+#### Starts the production server.
+```
 $ npm run start
 ```
 
-# Testing
+
+## Testing
 ```
 $ npm test
 ```
