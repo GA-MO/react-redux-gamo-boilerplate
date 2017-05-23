@@ -4,17 +4,17 @@ const todo = (state = [], action) => {
     case 'ADD_TODO': {
       return [...state, {
         id: state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,
-        todo: action.data,
-      }];
+        todo: action.data
+      }]
     }
     case 'DELETE_TODO': {
-      return state.filter(todo => todo.id !== action.id);
+      return state.filter(todo => todo.id !== action.id)
     }
     default: {
-      return state;
+      return state
     }
   }
-};
+}
 
-export default todo;
+export default todo
 

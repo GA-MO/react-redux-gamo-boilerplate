@@ -1,30 +1,29 @@
-// import fetch from 'isomorphic-fetch';
-import { push } from 'react-router-redux';
+import { push } from 'react-router-redux'
 
 export const ACTION = () => ({
   type: 'CONST_ACTION',
-  data: 'ACTION',
+  data: 'ACTION'
 })
 
 export const ACTION_2 = () => dispatch => dispatch({
   type: 'CONST_ACTION',
-  data: 'ACTION',
+  data: 'ACTION'
 })
 
 export const API_GET = () => ({
   type: 'CONST_API_GET',
   request: {
-    pathURL: '',
-  },
+    pathURL: ''
+  }
 })
 
 export const API_GET_CALLBACK = () => ({
   request: {
-    pathURL: '',
+    pathURL: ''
   },
   callback: (data, dispatch, getState) => {
 
-  },
+  }
 })
 
 
@@ -34,9 +33,9 @@ export const API_POST = () => ({
     options: {
       method: 'POST',
       headers: {},
-      body: {},
-    },
-  },
+      body: {}
+    }
+  }
 })
 
 export const API_POST_CALLBACK = () => ({
@@ -46,12 +45,12 @@ export const API_POST_CALLBACK = () => ({
     options: {
       method: 'POST',
       headers: {},
-      body: {},
-    },
+      body: {}
+    }
   },
   callback: (data, dispatch, getState) => {
 
-  },
+  }
 })
 
 

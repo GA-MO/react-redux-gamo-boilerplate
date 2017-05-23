@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 
 export default class Page1 extends Component {
   static propTypes = {
@@ -7,7 +7,7 @@ export default class Page1 extends Component {
 
   render() {
     return (
-      <div className="_center">
+      <div className='_center'>
         <br />
         <h1>Hello, Page1</h1>
       </div>

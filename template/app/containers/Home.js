@@ -25,10 +25,10 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <div className="_center">
+      <div className='_center'>
         <br />
         <h1>Hello, I am React</h1>
       </div>
-    );
+    )
   }
 }

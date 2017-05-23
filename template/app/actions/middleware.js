@@ -1,9 +1,9 @@
-import 'isomorphic-fetch';
-import config from '../../configs';
+import fetch from 'isomorphic-fetch'
+import config from '../../configs'
 
-require('es6-promise').polyfill();
+require('es6-promise').polyfill()
 
-const host = config.host;
+const host = config.host
 const apiFail = (response) => {
   if (response.status >= 200 && response.status < 300) return false
   return true
@@ -21,49 +21,48 @@ function fetchApi(url, options) {
     )
     .then(({ json, response }) => {
       if (apiFail(response)) {
-        // const { status, statusText } = response;
+        // const { status, statusText } = response
         // return Promise.reject({
         //   status,
         //   statusText,
-        // });
-        const error = new Error(response.statusText);
-        error.response = response;
-        throw error;
+        // })
+        const error = new Error(response.statusText)
+        error.response = response
+        throw error
       }
-      return json;
-    });
+      return json
+    })
 }
 
 export default (store) => (dispatch) => (action) => {
-
   /**
    * Check if action is a function return Dispatch and GetState
    * @param  {function} typeof action
    * @return {function}
    */
   if (typeof action === 'function') {
-    return action(store.dispatch, store.getState);
+    return action(store.dispatch, store.getState)
   }
 
   /**
    * If request is undefined will dispatch action
    */
-  const { type, request, callback, ...keys } = action;
-  if (!request) return dispatch(action);
+  const { type, request, callback, ...keys } = action
+  if (!request) return dispatch(action)
 
   /**
    * If pathURL in request is undefined will dispatch action
    */
-  const { pathURL, options = {} } = request;
-  if (!pathURL) return dispatch(action);
+  const { pathURL, options = {} } = request
+  if (!pathURL) return dispatch(action)
 
   /**
    * Dispatch action when start request API
    */
   dispatch({
     type: 'API_REQUEST',
-    ...keys,
-  });
+    ...keys
+  })
 
   /**
    * If there are options method are (POST, PUT)
@@ -75,10 +74,10 @@ export default (store) => (dispatch) => (action) => {
       ...options.headers,
       Accept: 'application/json',
       'Content-Type': 'application/json',
-    };
-    options.body = JSON.stringify(options.body);
+    }
+    options.body = JSON.stringify(options.body)
   } else {
-    options.method = 'GET';
+    options.method = 'GET'
   }
 
   /**
@@ -87,7 +86,7 @@ export default (store) => (dispatch) => (action) => {
    * @param {Object} options
    */
   return fetchApi(`${host}${pathURL}`, options)
-  .then(
+    .then(
 
     /**
      * Resolve promise
@@ -95,12 +94,11 @@ export default (store) => (dispatch) => (action) => {
      * @return {Function}
      */
     (responseData) => {
-
       /**
        * Dispatch action when request API is done
        */
       dispatch({
-        type: 'API_DONE',
+        type: 'API_DONE'
       })
 
       /**
@@ -108,7 +106,7 @@ export default (store) => (dispatch) => (action) => {
        */
       if (responseData.fault) {
         return dispatch({
-          type: 'ALERT',
+          type: 'ALERT'
         })
       }
 
@@ -118,7 +116,7 @@ export default (store) => (dispatch) => (action) => {
        * @return {Function} return dispatch, getState and response data
        */
       if (typeof callback === 'function') {
-        return callback(responseData, store.dispatch, store.getState);
+        return callback(responseData, store.dispatch, store.getState)
       }
 
       /**
@@ -128,8 +126,8 @@ export default (store) => (dispatch) => (action) => {
       return dispatch({
         ...keys,
         type: type,
-        responseData,
-      });
+        responseData
+      })
     },
 
     /**
@@ -140,7 +138,7 @@ export default (store) => (dispatch) => (action) => {
     error => dispatch({
       ...keys,
       type: 'API_FAIL',
-      error,
+      error
     })
-  );
+    )
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/action'
@@ -12,7 +12,7 @@ function mapStateToProps(state) {
 
 // Action
 const actions = {
-  goToPage: Action.goToPage,
+  goToPage: Action.goToPage
 }
 
 function mapDispatchToProps(dispatch) {
@@ -27,11 +27,11 @@ export default class Page2 extends React.Component {
 
   render() {
     return (
-      <div className="_center">
+      <div className='_center'>
         <br />
         <h1>Page2</h1>
-        <a href="javascript:;" onClick={() => this.props.actions.goToPage('style-guide')} className="button-outline">Go Style guide</a>
+        <a href='javascript:;' onClick={() => this.props.actions.goToPage('style-guide')} className='button-outline'>Go Style guide</a>
       </div>
-    );
+    )
   }
 }
