@@ -16,7 +16,7 @@
     "clean": "better-npm-run clean",
     "tester": "better-npm-run test",
     "test": "npm run lint && npm run tester",
-    "lint": "eslint *.js"
+    "lint": "eslint ./app/*/**.js"
   },
   "betterScripts": {
     "dev": {

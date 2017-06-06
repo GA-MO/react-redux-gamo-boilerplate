@@ -1,45 +1,45 @@
 
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var projectPath = require('./path');
+var webpack = require('webpack')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var projectPath = require('./path')
 
 var plugins = [
   new webpack.DefinePlugin({
     'process.env': {
       NODE_ENV: JSON.stringify('production'),
-      BUILD_ENV: JSON.stringify(`${process.env.BUILD_ENV}`),
-    },
+      BUILD_ENV: JSON.stringify(`${process.env.BUILD_ENV}`)
+    }
   }),
   new webpack.ProvidePlugin({
     React: 'react',
-    _: 'lodash',
+    _: 'lodash'
   }),
   new webpack.optimize.UglifyJsPlugin({
     compressor: {
-      warnings: false,
+      warnings: false
     },
-    minimize: true,
+    minimize: true
   }),
   new webpack.NoEmitOnErrorsPlugin(),
   new webpack.LoaderOptionsPlugin({
     minimize: true,
-    debug: false,
+    debug: false
   }),
   new ExtractTextPlugin({
     filename: 'css/style.css',
     disable: false,
-    allChunks: false,
+    allChunks: false
   }),
   new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',
     minChunks: Infinity,
     path: projectPath.build,
-    filename: 'js/[name].js',
-  }),
+    filename: 'js/[name].js'
+  })
 ]
 
-if (process.env.BUILD_ENV == 'client') {
+if (process.env.BUILD_ENV === 'client') {
   plugins.push(
     new HtmlWebpackPlugin({
       inject: true,
@@ -54,8 +54,8 @@ if (process.env.BUILD_ENV == 'client') {
         keepClosingSlash: true,
         minifyJS: true,
         minifyCSS: true,
-        minifyURLs: true,
-      },
+        minifyURLs: true
+      }
     })
   )
 }
@@ -65,21 +65,21 @@ module.exports = {
   entry: {
     app: [
       'babel-polyfill',
-      projectPath.indexFile,
+      projectPath.indexFile
     ],
     vendor: [
       'react',
       'react-dom',
       'react-redux',
       'react-router',
-      'redux',
-    ],
+      'redux'
+    ]
   },
 
   output: {
     path: projectPath.build,
     publicPath: '',
-    filename: 'js/bundle.js',
+    filename: 'js/bundle.js'
   },
 
   plugins: plugins,
@@ -89,15 +89,15 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
       {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: 'css-loader',
-          publicPath: '',
-        }),
+          publicPath: ''
+        })
       },
       {
         test: /\.scss$/,
@@ -105,30 +105,30 @@ module.exports = {
           fallback: 'style-loader',
           use: [
             {
-              loader: 'css-loader',
+              loader: 'css-loader'
             },
             {
               loader: 'sass-loader',
               options: {
-                sourceMap: true,
-              },
-            },
+                sourceMap: true
+              }
+            }
           ],
-          publicPath: '',
-        }),
+          publicPath: ''
+        })
       },
       {
         test: /\.(woff2?|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url-loader?limit=1000&name=fonts/[name].[ext]',
+        loader: 'url-loader?limit=1000&name=fonts/[name].[ext]'
       },
       {
         test: /\.(png|jpg)$/,
-        loader: 'url-loader?limit=1000&name=img/[name].[ext]',
-      },
-    ],
+        loader: 'url-loader?limit=1000&name=img/[name].[ext]'
+      }
+    ]
   },
   resolve: {
     modules: ['node_modules', 'app'],
-    extensions: ['.js', '.jsx', '.json'],
-  },
+    extensions: ['.js', '.jsx', '.json']
+  }
 }

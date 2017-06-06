@@ -26,7 +26,6 @@ export const API_GET_CALLBACK = () => ({
   }
 })
 
-
 export const API_POST = () => ({
   request: {
     pathURL: '',
@@ -52,6 +51,5 @@ export const API_POST_CALLBACK = () => ({
 
   }
 })
-
 
 export const goToPage = path => dispatch => dispatch(push(`/${path}`))

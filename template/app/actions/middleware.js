@@ -73,7 +73,7 @@ export default (store) => (dispatch) => (action) => {
     options.headers = {
       ...options.headers,
       Accept: 'application/json',
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json'
     }
     options.body = JSON.stringify(options.body)
   } else {
