@@ -14,9 +14,9 @@
     "build:client": "npm run clean && better-npm-run build:client",
     "start": "better-npm-run start",
     "clean": "better-npm-run clean",
-    "tester": "better-npm-run test",
-    "test": "npm run lint && npm run tester",
-    "lint": "eslint ./app/*/**.js"
+    "test": "npm run lint && better-npm-run test",
+    "test:watch": "better-npm-run test:watch",
+    "lint": "eslint ./app"
   },
   "betterScripts": {
     "dev": {
@@ -47,6 +47,9 @@
       }
     },
     "test": {
+      "command": "mocha ./test/*.js --compilers js:babel-register"
+    },
+    "test:watch": {
       "command": "mocha ./test/*.js --compilers js:babel-register --watch"
     },
     "clean": {
