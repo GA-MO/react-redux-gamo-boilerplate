@@ -5,6 +5,7 @@ var projectPath = require('./path')
 module.exports = {
   entry: [
     'babel-polyfill',
+    'react-hot-loader/patch',
     'webpack-hot-middleware/client',
     projectPath.indexFile
   ],
@@ -13,8 +14,9 @@ module.exports = {
     publicPath: '',
     filename: 'js/bundle.js'
   },
-  devtool: 'cheap-module-source-map',
+  devtool: 'eval',
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
       React: 'react',
       _: 'lodash'
@@ -25,7 +27,6 @@ module.exports = {
         BUILD_ENV: JSON.stringify(`${process.env.BUILD_ENV}`)
       }
     }),
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin()
   ],
   module: {
