@@ -5,21 +5,20 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var projectPath = require('./path')
 
 var plugins = [
+  new webpack.optimize.ModuleConcatenationPlugin(),
   new webpack.DefinePlugin({
     'process.env': {
       NODE_ENV: JSON.stringify('production'),
       BUILD_ENV: JSON.stringify(`${process.env.BUILD_ENV}`)
     }
   }),
-  new webpack.ProvidePlugin({
-    React: 'react',
-    _: 'lodash'
-  }),
   new webpack.optimize.UglifyJsPlugin({
     compressor: {
       warnings: false
     },
-    minimize: true
+    minimize: true,
+    beautify: false,
+    comments: false
   }),
   new webpack.NoEmitOnErrorsPlugin(),
   new webpack.LoaderOptionsPlugin({
@@ -61,18 +60,21 @@ if (process.env.BUILD_ENV === 'client') {
 }
 
 module.exports = {
-  devtool: 'source-map',
+  devtool: 'cheap-module-source-map',
   entry: {
-    app: [
-      'babel-polyfill',
-      projectPath.indexFile
-    ],
+    app: projectPath.indexFile,
     vendor: [
+      'babel-polyfill',
+      'es6-promise',
       'react',
+      'react-helmet',
       'react-dom',
       'react-redux',
       'react-router',
-      'redux'
+      'react-router-redux',
+      'redux',
+      'redux-logger',
+      'redux-thunk'
     ]
   },
 

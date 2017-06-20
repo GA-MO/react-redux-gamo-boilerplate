@@ -17,10 +17,6 @@ module.exports = {
   devtool: 'eval',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.ProvidePlugin({
-      React: 'react',
-      _: 'lodash'
-    }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(`${process.env.NODE_ENV}`),
