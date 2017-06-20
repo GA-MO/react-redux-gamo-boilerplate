@@ -47,10 +47,16 @@
       }
     },
     "test": {
-      "command": "mocha ./test/*.js --compilers js:babel-register"
+      "command": "mocha ./test/*.js --compilers js:babel-register",
+      "env": {
+        "NODE_ENV": "production"
+      }
     },
     "test:watch": {
-      "command": "mocha ./test/*.js --compilers js:babel-register --watch"
+      "command": "mocha ./test/*.js --compilers js:babel-register --watch",
+      "env": {
+        "NODE_ENV": "production"
+      }
     },
     "clean": {
       "command": "rimraf build"
