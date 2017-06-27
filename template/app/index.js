@@ -5,7 +5,6 @@ import { AppContainer } from 'react-hot-loader'
 import './css/style.scss'
 
 const rootEl = document.getElementById('app')
-module.hot.accept()
 render(<Root />, rootEl)
 
 if (module.hot) {
