@@ -1,10 +1,9 @@
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const projectPath = require('./path')
 
-var webpack = require('webpack')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
-var projectPath = require('./path')
-
-var plugins = [
+const plugins = [
   new webpack.optimize.ModuleConcatenationPlugin(),
   new webpack.DefinePlugin({
     'process.env': {
@@ -62,7 +61,7 @@ if (process.env.BUILD_ENV === 'client') {
 module.exports = {
   devtool: 'cheap-module-source-map',
   entry: {
-    app: projectPath.indexFile,
+    app: ['babel-polyfill', projectPath.indexFile],
     vendor: [
       'babel-polyfill',
       'es6-promise',

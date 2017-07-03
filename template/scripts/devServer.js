@@ -1,21 +1,21 @@
 require('babel-core/register')
-var express = require('express')
-var app = express()
-var chalk = require('chalk')
-var formatWebpackMessages = require('react-dev-utils/formatWebpackMessages')
-var clearConsole = require('react-dev-utils/clearConsole')
-var openBrowser = require('react-dev-utils/openBrowser')
-var webpack = require('webpack')
-var webpackConfig = require('../configs/webpack.config.dev')
-var projectPath = require('../configs/path')
-var config = require('../configs')
+const express = require('express')
+const app = express()
+const chalk = require('chalk')
+const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages')
+const clearConsole = require('react-dev-utils/clearConsole')
+const openBrowser = require('react-dev-utils/openBrowser')
+const webpack = require('webpack')
+const webpackConfig = require('../configs/webpack.config.dev')
+const projectPath = require('../configs/path')
+const config = require('../configs')
 
-var protocol = process.env.HTTPS === 'true' ? 'https' : 'http'
-var host = process.env.HOST || 'localhost'
-var port = config.port
-var isFirstCompile = true
+const protocol = process.env.HTTPS === 'true' ? 'https' : 'http'
+const host = process.env.HOST || 'localhost'
+const port = config.port
+let isFirstCompile = true
 
-var compiler = webpack(webpackConfig)
+const compiler = webpack(webpackConfig)
 
 compiler.plugin('invalid', function() {
   clearConsole()
@@ -23,9 +23,9 @@ compiler.plugin('invalid', function() {
 })
 
 compiler.plugin('done', function(stats) {
-  var messages = formatWebpackMessages(stats.toJson({}, true))
-  var isSuccessful = !messages.errors.length && !messages.warnings.length
-  var showInstructions = isSuccessful && isFirstCompile
+  const messages = formatWebpackMessages(stats.toJson({}, true))
+  const isSuccessful = !messages.errors.length && !messages.warnings.length
+  const showInstructions = isSuccessful && isFirstCompile
 
   clearConsole()
 

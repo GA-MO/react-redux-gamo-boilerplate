@@ -1,6 +1,6 @@
 
-var webpack = require('webpack')
-var projectPath = require('./path')
+const webpack = require('webpack')
+const projectPath = require('./path')
 
 module.exports = {
   entry: [

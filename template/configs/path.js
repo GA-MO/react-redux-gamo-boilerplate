@@ -1,4 +1,4 @@
-var path = require('path')
+const path = require('path')
 
 function resolvePath(pathName) {
   return path.resolve(process.cwd(), pathName)
