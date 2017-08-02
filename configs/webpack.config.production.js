@@ -25,7 +25,7 @@ const plugins = [
     debug: false
   }),
   new ExtractTextPlugin({
-    filename: 'css/style.css',
+    filename: 'style.css',
     disable: false,
     allChunks: false
   }),
@@ -33,7 +33,7 @@ const plugins = [
     name: 'vendor',
     minChunks: Infinity,
     path: projectPath.build,
-    filename: 'js/[name].js'
+    filename: '[name].js'
   })
 ]
 
@@ -80,7 +80,7 @@ module.exports = {
   output: {
     path: projectPath.build,
     publicPath: '',
-    filename: 'js/bundle.js'
+    filename: 'bundle.js'
   },
 
   plugins: plugins,
@@ -109,10 +109,7 @@ module.exports = {
               loader: 'css-loader'
             },
             {
-              loader: 'sass-loader',
-              options: {
-                sourceMap: true
-              }
+              loader: 'sass-loader'
             }
           ],
           publicPath: ''

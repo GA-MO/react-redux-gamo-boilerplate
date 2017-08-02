@@ -12,7 +12,7 @@ module.exports = {
   output: {
     path: projectPath.public,
     publicPath: '',
-    filename: 'js/bundle.js'
+    filename: 'bundle.js'
   },
   devtool: 'eval',
   plugins: [
