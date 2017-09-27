@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/action'
@@ -22,7 +23,7 @@ function mapDispatchToProps(dispatch) {
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Page2 extends React.Component {
   static propTypes = {
-    // name: React.PropTypes.string,
+    // name: PropTypes.string,
   };
 
   render() {

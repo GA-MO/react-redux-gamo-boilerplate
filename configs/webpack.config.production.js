@@ -42,6 +42,7 @@ if (process.env.BUILD_ENV === 'client') {
     new HtmlWebpackPlugin({
       inject: true,
       template: projectPath.htmlTemplate,
+      hash: true,
       minify: {
         removeComments: true,
         collapseWhitespace: true,
