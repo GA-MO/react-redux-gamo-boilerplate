@@ -4,7 +4,7 @@ import config from '../configs'
 
 const app = express()
 
-app.use(express.static('build'))
+app.use('/build', express.static('build'))
 app.use(ssr)
 app.set('port', process.env.PORT || config.port)
 const PORT = app.get('port')
