@@ -4,7 +4,7 @@ import config from '../../configs'
 require('es6-promise').polyfill()
 
 const host = config.host
-const apiFail = (response) => {
+const apiFail = response => {
   if (response.status >= 200 && response.status < 300) return false
   return true
 }
@@ -16,9 +16,7 @@ const apiFail = (response) => {
  */
 function fetchApi(url, options) {
   return fetch(url, options)
-    .then(response =>
-      response.json().then(json => ({ json, response }))
-    )
+    .then(response => response.json().then(json => ({ json, response })))
     .then(({ json, response }) => {
       if (apiFail(response)) {
         // const { status, statusText } = response
@@ -34,7 +32,7 @@ function fetchApi(url, options) {
     })
 }
 
-export default (store) => (dispatch) => (action) => {
+export default store => dispatch => action => {
   /**
    * Check if action is a function return Dispatch and GetState
    * @param  {function} typeof action
@@ -85,15 +83,13 @@ export default (store) => (dispatch) => (action) => {
    * @param {String} patch
    * @param {Object} options
    */
-  return fetchApi(`${host}${pathURL}`, options)
-    .then(
-
+  return fetchApi(`${host}${pathURL}`, options).then(
     /**
      * Resolve promise
      * @param  {Any} data
      * @return {Function}
      */
-    (responseData) => {
+    responseData => {
       /**
        * Dispatch action when request API is done
        */
@@ -135,10 +131,11 @@ export default (store) => (dispatch) => (action) => {
      * @param  {Object} error
      * @return {Function}
      */
-    error => dispatch({
-      ...keys,
-      type: 'API_FAIL',
-      error
-    })
-    )
+    error =>
+      dispatch({
+        ...keys,
+        type: 'API_FAIL',
+        error
+      })
+  )
 }
