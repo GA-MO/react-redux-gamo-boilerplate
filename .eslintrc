@@ -5,6 +5,7 @@ parser: babel-eslint
 rules:
   object-curly-spacing: [ error, always ]
   react/prop-types: off
+  import/no-unresolved: 2
   space-before-function-paren: off
 globals:
   React: false
