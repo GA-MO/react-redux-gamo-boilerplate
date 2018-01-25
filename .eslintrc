@@ -6,6 +6,7 @@ rules:
   object-curly-spacing: [ error, always ]
   import/no-unresolved: 2
   react/prop-types: off
+  import/no-unresolved: 2
   space-before-function-paren: off
 globals:
   React: false

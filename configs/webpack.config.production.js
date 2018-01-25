@@ -2,6 +2,10 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const projectPath = require('./path')
+const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin')
+const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(
+  require('./webpack-isomorphic-tools')
+)
 
 const plugins = [
   new webpack.optimize.ModuleConcatenationPlugin(),
@@ -34,7 +38,8 @@ const plugins = [
     minChunks: Infinity,
     path: projectPath.build,
     filename: '[name].js'
-  })
+  }),
+  webpackIsomorphicToolsPlugin
 ]
 
 if (process.env.BUILD_ENV === 'client') {
@@ -121,7 +126,7 @@ module.exports = {
         loader: 'url-loader?limit=1000&name=fonts/[name].[ext]'
       },
       {
-        test: /\.(png|jpg)$/,
+        test: webpackIsomorphicToolsPlugin.regularExpression('images'),
         loader: 'url-loader?limit=1000&name=img/[name].[ext]'
       }
     ]
