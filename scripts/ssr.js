@@ -1,8 +1,9 @@
 import React from 'react'
 import { renderToString } from 'react-dom/server'
-import { RouterContext, match } from 'react-router'
+import { StaticRouter } from 'react-router-dom'
+import { renderRoutes, matchRoutes } from 'react-router-config'
 import Helmet from 'react-helmet'
-import createMemoryHistory from 'react-router/lib/createMemoryHistory'
+import { createMemoryHistory } from 'history'
 import { Provider } from 'react-redux'
 import configureStore from '../app/store/configureStore'
 import routes from '../app/routes'
@@ -30,55 +31,36 @@ const renderFullPage = (html, initialState) => {
   `
 }
 
-const fetchComponent = (dispatch, components, params) => {
-  const needs = components
-    .filter(component => component)
-    .reduce((prev, current) => {
-      const wrappedComponent = current.WrappedComponent
-
-      return (current.need || [])
-        .concat((wrappedComponent && wrappedComponent.need) || [])
-        .concat(prev)
-    }, [])
-
-  return Promise.all(needs.map(need => dispatch(need(params))))
-}
-
 export default (req, res) => {
-  const memoryHistory = createMemoryHistory(req.url)
+  const memoryHistory = createMemoryHistory()
   const store = configureStore(memoryHistory)
+  const branch = matchRoutes(routes, req.url)
+  const promises = branch.map(({ route }) => {
+    let fetchData = route.component.fetchData
+    return fetchData instanceof Function
+      ? fetchData(store)
+      : Promise.resolve(null)
+  })
 
-  match(
-    { routes, location: req.url },
-    (error, redirectLocation, renderProps) => {
-      // Error internal server
-      if (error) {
-        console.log(error)
-        res.status(500).send('Internal Server Error')
-      } else if (redirectLocation) {
-        res.redirect(
-          302,
-          `${redirectLocation.pathname}${redirectLocation.search}`
-        )
-      } else if (renderProps) {
-        const { components, params } = renderProps
-        fetchComponent(store.dispatch, components, params)
-          .then(() => {
-            const componentHTML = renderToString(
-              <Provider store={store} key='provider'>
-                <RouterContext {...renderProps} />
-              </Provider>
-            )
-            const initialState = store.getState()
-            res.status(200).send(renderFullPage(componentHTML, initialState))
-          })
-          .catch(err => {
-            console.log(err)
-            res.status(500).send('Internal Server Error')
-          })
-      } else {
-        res.status(404).send('Not found')
-      }
+  return Promise.all(promises).then(data => {
+    let context = {}
+    const content = renderToString(
+      <Provider store={store}>
+        <StaticRouter location={req.url} context={context}>
+          {renderRoutes(routes)}
+        </StaticRouter>
+      </Provider>
+    )
+
+    if (context.status === 404) {
+      res.status(404)
     }
-  )
+
+    if (context.status === 302) {
+      return res.redirect(302, context.url)
+    }
+
+    const initialState = store.getState()
+    res.status(200).send(renderFullPage(content, initialState))
+  })
 }

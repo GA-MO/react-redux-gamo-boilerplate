@@ -3,7 +3,6 @@ import { routerMiddleware } from 'react-router-redux'
 import thunk from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 import rootReducer from '../reducers'
-// import middleware from '../actions/middleware'
 
 export default (initialState, history) => {
   const middlewares = [thunk, routerMiddleware(history)]
@@ -15,6 +14,13 @@ export default (initialState, history) => {
     initialState,
     applyMiddleware(...middlewares)
   )
+
+  if (module.hot) {
+    module.hot.accept('../reducers', () => {
+      const nextRootReducer = require('../reducers/index').default
+      store.replaceReducer(nextRootReducer)
+    })
+  }
 
   return store
 }

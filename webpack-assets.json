@@ -1,1 +1,1 @@
-{"javascript":{"app":"bundle.js","vendor":"vendor.js"},"styles":{"app":"style.css"},"assets":{},"webpack":{"version":"3.6.0"}}
+{"javascript":{"vendor":"vendor.js","app":"bundle.js"},"styles":{"app":"style.css"},"assets":{},"webpack":{"version":"4.1.0"}}

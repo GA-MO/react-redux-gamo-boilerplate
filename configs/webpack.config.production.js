@@ -8,36 +8,15 @@ const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(
 )
 
 const plugins = [
-  new webpack.optimize.ModuleConcatenationPlugin(),
   new webpack.DefinePlugin({
     'process.env': {
       NODE_ENV: JSON.stringify('production'),
       BUILD_ENV: JSON.stringify(`${process.env.BUILD_ENV}`)
     }
   }),
-  new webpack.optimize.UglifyJsPlugin({
-    compressor: {
-      warnings: false
-    },
-    minimize: true,
-    beautify: false,
-    comments: false
-  }),
-  new webpack.NoEmitOnErrorsPlugin(),
-  new webpack.LoaderOptionsPlugin({
-    minimize: true,
-    debug: false
-  }),
   new ExtractTextPlugin({
     filename: 'style.css',
-    disable: false,
-    allChunks: false
-  }),
-  new webpack.optimize.CommonsChunkPlugin({
-    name: 'vendor',
-    minChunks: Infinity,
-    path: projectPath.build,
-    filename: '[name].js'
+    allChunks: true
   }),
   webpackIsomorphicToolsPlugin
 ]
@@ -65,7 +44,8 @@ if (process.env.BUILD_ENV === 'client') {
 }
 
 module.exports = {
-  devtool: 'cheap-module-source-map',
+  mode: 'production',
+  performance: { hints: false },
   entry: {
     app: ['babel-polyfill', projectPath.indexFile],
     vendor: [
@@ -86,7 +66,21 @@ module.exports = {
   output: {
     path: projectPath.build,
     publicPath: '',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    chunkFilename: '[name].js'
+  },
+
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          chunks: 'initial',
+          test: 'vendor',
+          name: 'vendor',
+          enforce: true
+        }
+      }
+    }
   },
 
   plugins: plugins,
@@ -102,8 +96,7 @@ module.exports = {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: 'css-loader',
-          publicPath: ''
+          use: 'css-loader'
         })
       },
       {
@@ -117,8 +110,7 @@ module.exports = {
             {
               loader: 'sass-loader'
             }
-          ],
-          publicPath: ''
+          ]
         })
       },
       {

@@ -1,19 +1,24 @@
 import React from 'react'
+import { hot } from 'react-hot-loader'
 import { Provider } from 'react-redux'
-import { Router, browserHistory, useRouterHistory } from 'react-router'
-import { createHashHistory } from 'history'
+import { ConnectedRouter } from 'react-router-redux'
+import { renderRoutes } from 'react-router-config'
+import { createHashHistory, createBrowserHistory } from 'history'
 import configureStore from '../store/configureStore'
 import routes from '../routes'
 
-export default () => {
-  /* Get initialstate */
-  const initialState = window.__INITIAL_STATE__
-  const isBuildClient = process.env.BUILD_ENV === 'client'
-  const history = isBuildClient ? useRouterHistory(createHashHistory)({ queryKey: false }) : browserHistory
-  const store = configureStore(initialState, history)
+/* Get initialstate */
+const initialState = window.__INITIAL_STATE__
+const isBuildClient = process.env.BUILD_ENV === 'client'
+const history = isBuildClient ? createHashHistory() : createBrowserHistory()
+const store = configureStore(initialState, history)
+
+export default hot(module)(() => {
   return (
-    <Provider store={store} key='provider'>
-      <Router history={history} routes={routes} />
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        {renderRoutes(routes)}
+      </ConnectedRouter>
     </Provider>
   )
-}
+})

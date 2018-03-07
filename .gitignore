@@ -3,4 +3,5 @@
 /build
 yarn.lock
 yarn-error.log
+webpack-assets.json
 debug.log

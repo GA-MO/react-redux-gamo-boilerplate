@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const projectPath = require('./path')
 
 module.exports = {
+  mode: 'development',
   entry: [
     'babel-polyfill',
     'react-hot-loader/patch',
@@ -14,7 +15,6 @@ module.exports = {
     publicPath: '',
     filename: 'bundle.js'
   },
-  devtool: 'eval',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({

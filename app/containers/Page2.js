@@ -1,38 +1,30 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/action'
 
-// State
-function mapStateToProps(state) {
-  return {
-    // myState: state.myState,
-  }
+function mapStateToProps (state) {
+  return {}
 }
 
-// Action
 const actions = {
   goToPage: Action.goToPage
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return { actions: bindActionCreators(actions, dispatch) }
 }
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Page2 extends React.Component {
-  static propTypes = {
-    // name: PropTypes.string,
-  };
-
-  render() {
+  render () {
     return (
-      <div className='_center'>
-        <br />
+      <React.Fragment>
         <h1>Page2</h1>
-        <a href='javascript:;' onClick={() => this.props.actions.goToPage('style-guide')} className='button-outline'>Go Style guide</a>
-      </div>
+        <button onClick={() => this.props.actions.goToPage('')}>
+          Go Home
+        </button>
+      </React.Fragment>
     )
   }
 }

@@ -1,0 +1,28 @@
+.main-header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  background: #333;
+  padding: 5px 0;
+}
+.navigation{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  > li{
+    display: inline-block;
+  }
+  > li > a{
+    display: block;
+    padding: 10px 50px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+
+    &.active{
+      background: #666;
+    }
+  }
+}

@@ -63,22 +63,7 @@ compiler.plugin('done', function(stats) {
 
 app.use(
   require('webpack-dev-middleware')(compiler, {
-    publicPath: webpackConfig.output.publicPath,
-    hot: true,
-    historyApiFallback: true,
-    noInfo: true,
-    compress: true,
-    stats: {
-      assets: true,
-      colors: true,
-      version: false,
-      hash: false,
-      timings: false,
-      chunks: false,
-      chunkModules: false
-    },
-    quiet: true,
-    inline: false
+    publicPath: webpackConfig.output.publicPath
   })
 )
 

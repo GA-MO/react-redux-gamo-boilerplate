@@ -1,25 +1,30 @@
-
 import React, { Component } from 'react'
-import { Link } from 'react-router'
+import { renderRoutes } from 'react-router-config'
+import { NavLink } from 'react-router-dom'
 import Helmet from 'react-helmet'
 
 class App extends Component {
-  render() {
+  render () {
     return (
-      <div>
+      <React.Fragment>
         <Helmet title='React Redux boilerplate' />
         <header className='main-header'>
           <nav>
             <ul className='navigation'>
-              <li><Link activeClassName='active' onlyActiveOnIndex to='/'>Home</Link></li>
-              <li><Link activeClassName='active' to='/page1'>Page1</Link></li>
-              <li><Link activeClassName='active' to='/page2'>Page2</Link></li>
-              <li><Link activeClassName='active' to='/style-guide'>Style Guide</Link></li>
+              <li>
+                <NavLink activeClassName='active' exact to='/'>Home</NavLink>
+              </li>
+              <li>
+                <NavLink activeClassName='active' to='/page1'>Page1</NavLink>
+              </li>
+              <li>
+                <NavLink activeClassName='active' to='/page2'>Page2</NavLink>
+              </li>
             </ul>
           </nav>
         </header>
-        {this.props.children}
-      </div>
+        {renderRoutes(this.props.route.routes)}
+      </React.Fragment>
     )
   }
 }
