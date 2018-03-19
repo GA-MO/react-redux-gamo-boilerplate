@@ -17,13 +17,14 @@ const renderFullPage = (html, initialState) => {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         ${head.title.toString()}
-        <link rel="stylesheet" type="text/css" href="/style.css">
+        <link rel="stylesheet" type="text/css" href="/style.css?v=${Date.now()}">
       </head>
       <body>
         <div id="app">${html}</div>
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}; 
         </script>
+        <script src="/polyfill.js?v=${Date.now()}"></script>
         <script src="/vendor.js?v=${Date.now()}"></script>
         <script src="/bundle.js?v=${Date.now()}"></script>
       </body>

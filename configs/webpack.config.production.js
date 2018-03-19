@@ -47,18 +47,18 @@ module.exports = {
   mode: 'production',
   performance: { hints: false },
   entry: {
-    app: ['babel-polyfill', projectPath.indexFile],
+    polyfill: ['babel-polyfill'],
+    app: projectPath.indexFile,
     vendor: [
-      'babel-polyfill',
-      'es6-promise',
+      'history',
       'react',
       'react-helmet',
       'react-dom',
       'react-redux',
-      'react-router',
+      'react-router-dom',
+      'react-router-config',
       'react-router-redux',
       'redux',
-      'redux-logger',
       'redux-thunk'
     ]
   },
@@ -73,6 +73,12 @@ module.exports = {
   optimization: {
     splitChunks: {
       cacheGroups: {
+        polyfill: {
+          chunks: 'initial',
+          test: 'polyfill',
+          name: 'polyfill',
+          enforce: true
+        },
         vendor: {
           chunks: 'initial',
           test: 'vendor',
