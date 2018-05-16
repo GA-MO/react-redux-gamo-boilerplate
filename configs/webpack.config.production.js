@@ -47,7 +47,7 @@ module.exports = {
   mode: 'production',
   performance: { hints: false },
   entry: {
-    polyfill: ['babel-polyfill'],
+    polyfill: [ 'babel-polyfill' ],
     app: projectPath.indexFile,
     vendor: [
       'history',
@@ -130,7 +130,7 @@ module.exports = {
     ]
   },
   resolve: {
-    modules: ['node_modules', 'app'],
-    extensions: ['.js', '.jsx', '.json']
+    modules: [ 'node_modules', 'app' ],
+    extensions: [ '.js', '.jsx', '.json' ]
   }
 }

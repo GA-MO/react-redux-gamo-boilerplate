@@ -1,6 +1,6 @@
 const path = require('path')
 
-function resolvePath(pathName) {
+function resolvePath (pathName) {
   return path.resolve(process.cwd(), pathName)
 }
 

@@ -21,9 +21,7 @@ export default class Page2 extends React.Component {
     return (
       <React.Fragment>
         <h1>Page2</h1>
-        <button onClick={() => this.props.actions.goToPage('')}>
-          Go Home
-        </button>
+        <button onClick={() => this.props.actions.goToPage('')}>Go Home</button>
       </React.Fragment>
     )
   }

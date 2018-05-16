@@ -5,7 +5,7 @@ import { createLogger } from 'redux-logger'
 import rootReducer from '../reducers'
 
 export default (initialState, history) => {
-  const middlewares = [thunk, routerMiddleware(history)]
+  const middlewares = [ thunk, routerMiddleware(history) ]
 
   if (process.env.NODE_ENV !== 'production') middlewares.push(createLogger())
 

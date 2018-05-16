@@ -12,13 +12,19 @@ class App extends Component {
           <nav>
             <ul className='navigation'>
               <li>
-                <NavLink activeClassName='active' exact to='/'>Home</NavLink>
+                <NavLink activeClassName='active' exact to='/'>
+                  Home
+                </NavLink>
               </li>
               <li>
-                <NavLink activeClassName='active' to='/page1'>Page1</NavLink>
+                <NavLink activeClassName='active' to='/page1'>
+                  Page1
+                </NavLink>
               </li>
               <li>
-                <NavLink activeClassName='active' to='/page2'>Page2</NavLink>
+                <NavLink activeClassName='active' to='/page2'>
+                  Page2
+                </NavLink>
               </li>
             </ul>
           </nav>
