@@ -17,8 +17,10 @@ function mapDispatchToProps (dispatch) {
 }
 
 @connect(mapStateToProps, mapDispatchToProps)
-export default class Home extends React.Component {
+class Home extends React.Component {
   render () {
     return <h1>Hello, React</h1>
   }
 }
+
+export default Home

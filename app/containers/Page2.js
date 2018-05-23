@@ -16,7 +16,7 @@ function mapDispatchToProps (dispatch) {
 }
 
 @connect(mapStateToProps, mapDispatchToProps)
-export default class Page2 extends React.Component {
+class Page2 extends React.Component {
   render () {
     return (
       <React.Fragment>
@@ -26,3 +26,5 @@ export default class Page2 extends React.Component {
     )
   }
 }
+
+export default Page2
