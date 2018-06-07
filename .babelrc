@@ -1,9 +1,14 @@
 {
-  "presets": ["es2015", "stage-0", "react"],
-  "plugins": ["react-hot-loader/babel", "transform-decorators-legacy", "transform-runtime"],
+  "presets": [ "es2015", "stage-0", "react" ],
+  "plugins": [
+    "react-hot-loader/babel",
+    "transform-decorators-legacy",
+    "transform-runtime",
+    "syntax-dynamic-import"
+  ],
   "env": {
     "development": {
-      "presets": ["react-hmre"]
+      "presets": [ "react-hmre" ]
     }
   }
 }

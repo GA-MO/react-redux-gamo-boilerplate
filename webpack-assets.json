@@ -1,1 +1,1 @@
-{"javascript":{"vendor":"vendor.js","app":"bundle.js","polyfill":"polyfill.js"},"styles":{"app":"style.css"},"assets":{},"webpack":{"version":"4.8.3"}}
+{"javascript":{"page2":"page2.js","page1":"page1.js","home":"home.js","app":"bundle.js","vendor":"vendor.js","polyfill":"polyfill.js"},"styles":{"app":"style.css","vendor":"style.css","polyfill":"style.css"},"assets":{},"webpack":{"version":"4.11.1"}}

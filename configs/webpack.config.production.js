@@ -48,7 +48,6 @@ module.exports = {
   performance: { hints: false },
   entry: {
     polyfill: [ 'babel-polyfill' ],
-    app: projectPath.indexFile,
     vendor: [
       'history',
       'react',
@@ -60,7 +59,8 @@ module.exports = {
       'react-router-redux',
       'redux',
       'redux-thunk'
-    ]
+    ],
+    app: projectPath.indexFile
   },
 
   output: {
