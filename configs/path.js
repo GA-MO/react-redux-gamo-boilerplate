@@ -1,10 +1,8 @@
-const path = require('path')
+import path from 'path'
 
-function resolvePath (pathName) {
-  return path.resolve(process.cwd(), pathName)
-}
+const resolvePath = (pathName) => path.resolve(process.cwd(), pathName)
 
-module.exports = {
+export default {
   build: resolvePath('build'),
   public: resolvePath('public'),
   htmlIndex: resolvePath('public/index.html'),

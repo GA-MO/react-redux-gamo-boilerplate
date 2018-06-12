@@ -1,32 +1,34 @@
-require('babel-core/register')
-const express = require('express')
+import webpack from 'webpack'
+import express from 'express'
+import chalk from 'chalk'
+import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages'
+import clearConsole from 'react-dev-utils/clearConsole'
+import openBrowser from 'react-dev-utils/openBrowser'
+import { choosePort } from 'react-dev-utils/WebpackDevServerUtils'
+import webpackConfig from '../configs/webpack.config.dev.babel'
+import projectPath from '../configs/path'
+import config from '../configs'
+
 const app = express()
-const chalk = require('chalk')
-const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages')
-const clearConsole = require('react-dev-utils/clearConsole')
-const openBrowser = require('react-dev-utils/openBrowser')
-const { choosePort } = require('react-dev-utils/WebpackDevServerUtils')
-const webpack = require('webpack')
-const webpackConfig = require('../configs/webpack.config.dev')
-const projectPath = require('../configs/path')
-const config = require('../configs')
 
 const protocol = process.env.HTTPS === 'true' ? 'https' : 'http'
 const HOST = process.env.HOST || 'localhost'
 const DEFAULT_PORT = config.port
 let isFirstCompile = true
 
-choosePort(HOST, DEFAULT_PORT)
-  .then(port => {
+const startDevServer = async () => {
+  try {
+    const port = await choosePort(HOST, DEFAULT_PORT)
     if (port == null) return
 
     const compiler = webpack(webpackConfig)
-    compiler.plugin('invalid', function () {
+
+    compiler.plugin('invalid', () => {
       clearConsole()
       console.log(chalk.yellow('Compiling...'))
     })
 
-    compiler.plugin('done', function (stats) {
+    compiler.plugin('done', (stats) => {
       const messages = formatWebpackMessages(stats.toJson({}, true))
       const isSuccessful = !messages.errors.length && !messages.warnings.length
       const showInstructions = isSuccessful && isFirstCompile
@@ -58,7 +60,7 @@ choosePort(HOST, DEFAULT_PORT)
       if (messages.errors.length) {
         console.log(chalk.red('Failed to compile.'))
         console.log()
-        messages.errors.forEach(message => {
+        messages.errors.forEach((message) => {
           console.log(message)
           console.log()
         })
@@ -79,7 +81,7 @@ choosePort(HOST, DEFAULT_PORT)
       res.sendFile(projectPath.htmlIndex)
     })
 
-    app.listen(port, err => {
+    app.listen(port, (err) => {
       if (err) {
         console.log(err)
         return
@@ -94,10 +96,12 @@ choosePort(HOST, DEFAULT_PORT)
       console.log('   ' + chalk.cyan.bold('══════════════════════════════════'))
       console.log()
     })
-  })
-  .catch(err => {
-    if (err && err.message) {
-      console.log(err.message)
+  } catch (error) {
+    if (error && error.message) {
+      console.log(error.message)
     }
     process.exit(1)
-  })
+  }
+}
+
+startDevServer()

@@ -1,11 +1,12 @@
-const WebpackIsomorphicTools = require('webpack-isomorphic-tools')
-const projectBasePath = require('path').resolve(__dirname, '..')
+import 'ignore-styles'
+import 'babel-core/register'
+import path from 'path'
+import IsomorphicToolsPlugin from 'webpack-isomorphic-tools'
+import IsomophicTools from '../configs/webpack-isomorphic-tools'
+import server from './server'
 
-require('ignore-styles')
-require('babel-core/register')
+const projectBasePath = path.resolve(__dirname, '..')
 
-global.webpackIsomorphicTools = new WebpackIsomorphicTools(
-  require('../configs/webpack-isomorphic-tools')
-).server(projectBasePath, () => {
-  require('./server')
-})
+global.webpackIsomorphicTools = new IsomorphicToolsPlugin(
+  IsomophicTools
+).server(projectBasePath, () => server)
