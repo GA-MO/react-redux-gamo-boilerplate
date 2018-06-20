@@ -2,7 +2,7 @@
 React starter boilerplate for SPA and SSR
 ### Main Tools
 
-- [React (16.4.0)](https://github.com/facebook/react)
+- [React (16.4.1)](https://github.com/facebook/react)
 - [React Router Dom (4.3.1)](https://github.com/rackt/react-router)
 - [Redux (4.0.0)](https://github.com/rackt/redux)
 - [Node sass (4.9.0)](https://github.com/sass/node-sass)
